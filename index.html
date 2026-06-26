@@ -52,6 +52,7 @@
       font-size: 16px;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+      scroll-padding-top: 100px;
     }
 
     body {
@@ -1623,6 +1624,18 @@
     }
 
     @media (max-width: 992px) {
+      .navbar {
+        padding: 1.5rem 2rem;
+      }
+      .navbar.scrolled {
+        padding: 1rem 2rem;
+      }
+      .nav-menu, .navbar .nav-cta {
+        display: none;
+      }
+      .nav-toggle {
+        display: flex;
+      }
       .about-section {
         grid-template-columns: 1fr;
         gap: 5rem;
@@ -1662,18 +1675,6 @@
     }
 
     @media (max-width: 768px) {
-      .navbar {
-        padding: 1.5rem 2rem;
-      }
-      .navbar.scrolled {
-        padding: 1rem 2rem;
-      }
-      .nav-menu, .navbar .nav-cta {
-        display: none;
-      }
-      .nav-toggle {
-        display: flex;
-      }
       .hero-container {
         padding: 0 2rem;
       }
