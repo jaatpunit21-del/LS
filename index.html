@@ -386,7 +386,7 @@
       left: 0;
       width: 100%;
       height: 120%; /* Extra height to allow parallax movement */
-      background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800');
+      background-image: url('images/hero_bg.jpg');
       background-size: cover;
       background-position: center;
       z-index: 1;
@@ -1994,7 +1994,7 @@
       </p>
       <div class="hero-ctas">
         <a href="#portfolio" class="btn btn-solid">View Our Work</a>
-        <a href="#contact" class="btn btn-ghost">Free Consultation</a>
+        <a href="#contact" class="btn btn-ghost">Get a Quote</a>
       </div>
     </div>
 
@@ -2064,8 +2064,8 @@
   <!-- About / Story Section -->
   <section class="about-section" id="about">
     <div class="about-images-wrapper reveal">
-      <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1000&q=80" alt="Bespoke Luxury Estate Garden" class="about-img-main">
-      <img src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=600&q=80" alt="Hands in soil gardening details" class="about-img-accent">
+      <img src="images/about_main.jpg" alt="Bespoke Luxury Estate Garden" class="about-img-main">
+      <img src="images/about_accent.jpg" alt="Hands in soil gardening details" class="about-img-accent">
     </div>
     
     <div class="about-details reveal">
@@ -2196,7 +2196,7 @@
     <div class="portfolio-grid">
       <!-- Item 1: Lawns -->
       <div class="portfolio-item reveal" data-category="lawns">
-        <img src="https://images.unsplash.com/photo-1534710961216-75c941430f31?w=800&q=80" alt="The Aspen Ridge Estate Lawn" class="portfolio-item-img">
+        <img src="images/portfolio_1.jpg" alt="The Aspen Ridge Estate Lawn" class="portfolio-item-img">
         <div class="portfolio-item-overlay">
           <div class="portfolio-meta">
             <span class="label-mono" style="color: var(--gold-detail);">Aspen, CO</span>
@@ -2210,7 +2210,7 @@
       
       <!-- Item 2: Gardens -->
       <div class="portfolio-item reveal" data-category="gardens">
-        <img src="https://images.unsplash.com/photo-1508873696983-2df519f0397e?w=800&q=80" alt="Kyoto Minimalist Garden Path" class="portfolio-item-img">
+        <img src="images/portfolio_2.jpg" alt="Kyoto Minimalist Garden Path" class="portfolio-item-img">
         <div class="portfolio-item-overlay">
           <div class="portfolio-meta">
             <span class="label-mono" style="color: var(--gold-detail);">Portland, OR</span>
@@ -2224,7 +2224,7 @@
       
       <!-- Item 3: Backyards -->
       <div class="portfolio-item reveal" data-category="backyards">
-        <img src="https://images.unsplash.com/photo-1560749003-f4b1e17e2dff?w=800&q=80" alt="Austin Cedar Pergola Backyard" class="portfolio-item-img">
+        <img src="images/portfolio_3.jpg" alt="Austin Cedar Pergola Backyard" class="portfolio-item-img">
         <div class="portfolio-item-overlay">
           <div class="portfolio-meta">
             <span class="label-mono" style="color: var(--gold-detail);">Austin, TX</span>
@@ -2238,7 +2238,7 @@
       
       <!-- Item 4: Gardens -->
       <div class="portfolio-item reveal" data-category="gardens">
-        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80" alt="The Berkshire Retreat Garden" class="portfolio-item-img">
+        <img src="images/portfolio_4.jpg" alt="The Berkshire Retreat Garden" class="portfolio-item-img">
         <div class="portfolio-item-overlay">
           <div class="portfolio-meta">
             <span class="label-mono" style="color: var(--gold-detail);">Lennox, MA</span>
@@ -2252,7 +2252,7 @@
 
       <!-- Item 5: Lawns -->
       <div class="portfolio-item reveal" data-category="lawns">
-        <img src="https://images.unsplash.com/photo-1592417817098-8f3d6eb19675?w=800&q=80" alt="The Berkshire Turf Estate" class="portfolio-item-img">
+        <img src="images/portfolio_5.jpg" alt="The Berkshire Turf Estate" class="portfolio-item-img">
         <div class="portfolio-item-overlay">
           <div class="portfolio-meta">
             <span class="label-mono" style="color: var(--gold-detail);">Stockbridge, MA</span>
@@ -2266,7 +2266,7 @@
 
       <!-- Item 6: Backyards -->
       <div class="portfolio-item reveal" data-category="backyards">
-        <img src="https://images.unsplash.com/photo-1584467541268-b040f83be3fd?w=800&q=80" alt="The Sonoma Green Backyard" class="portfolio-item-img">
+        <img src="images/portfolio_6.jpg" alt="The Sonoma Green Backyard" class="portfolio-item-img">
         <div class="portfolio-item-overlay">
           <div class="portfolio-meta">
             <span class="label-mono" style="color: var(--gold-detail);">Sonoma, CA</span>
@@ -2420,9 +2420,9 @@
     
     <div class="slider-container reveal">
       <!-- After Image -->
-      <div class="slider-img slider-img-after" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80');"></div>
+      <div class="slider-img slider-img-after" style="background-image: url('images/after.jpg');"></div>
       <!-- Before Image (clipped) -->
-      <div class="slider-img slider-img-before" id="before-img" style="background-image: url('https://images.unsplash.com/photo-1590082871875-06c40727b388?w=1200&q=80');"></div>
+      <div class="slider-img slider-img-before" id="before-img" style="background-image: url('images/before.jpg');"></div>
       
       <!-- Slider Handle -->
       <div class="slider-handle" id="slider-handle"></div>
@@ -2780,6 +2780,33 @@
       window.addEventListener('touchend', () => isDragging = false);
       window.addEventListener('touchmove', handleMove);
     }
+
+    // Smooth scroll and auto-focus for Get a Quote & Appointment buttons
+    const quoteLinks = document.querySelectorAll('a[href="#contact"], .sticky-btn-appt');
+    quoteLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // If it's a mobile link inside the overlay, close the overlay first
+        if (link.classList.contains('mobile-link')) {
+          navToggle.classList.remove('open');
+          mobileOverlay.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+        
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth' });
+          // Focus name input after scroll ends
+          setTimeout(() => {
+            const nameInput = document.getElementById('form-name');
+            if (nameInput) {
+              nameInput.focus();
+            }
+          }, 800);
+        }
+      });
+    });
   </script>
 
   <!-- Sticky Floating Action Bar -->
