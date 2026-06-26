@@ -317,6 +317,9 @@
       height: 18px;
       cursor: pointer;
       z-index: 951;
+      padding: 10px;
+      margin: -10px;
+      box-sizing: content-box;
     }
 
     .nav-toggle span {
@@ -1676,20 +1679,68 @@
 
     @media (max-width: 768px) {
       .hero-container {
-        padding: 0 2rem;
+        padding: 0 1.5rem;
+        height: 100dvh;
+      }
+      .hero-title {
+        font-size: clamp(2rem, 8vw, 3.2rem);
+        margin-bottom: 1.5rem;
+      }
+      .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2.2rem;
+      }
+      .hero-ctas {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+      }
+      .hero-ctas .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
       }
       .about-section, .services-section, .portfolio-section, .process-section, .contact-section {
-        padding: 6rem 2rem;
+        padding: 5rem 1.5rem;
+      }
+      .section-title, .about-title, .contact-title {
+        font-size: clamp(1.8rem, 7vw, 2.5rem);
       }
       .about-images-wrapper {
-        height: 400px;
+        height: 350px;
+        margin-bottom: 4rem;
+      }
+      .about-img-accent {
+        height: 180px;
+        bottom: -30px;
+      }
+      .portfolio-filter-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+      }
+      .portfolio-filters {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        gap: 1.5rem;
+        padding-bottom: 0.8rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .portfolio-filters::-webkit-scrollbar {
+        display: none;
+      }
+      .filter-btn {
+        flex-shrink: 0;
       }
       .portfolio-grid {
         gap: 2rem;
       }
       .portfolio-item {
         grid-column: span 12 !important;
-        height: 400px !important;
+        height: 280px !important;
         transform: none !important;
       }
       .portfolio-item-overlay {
@@ -1700,22 +1751,29 @@
       }
       .services-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .service-card {
+        height: auto;
+        min-height: 280px;
+        padding: 2.5rem 1.5rem;
       }
       .process-content-panel {
-        padding: 2.5rem;
+        padding: 2rem 1.5rem;
       }
       .process-detail-title {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
       }
       .inquiry-form-card {
-        padding: 2.5rem;
+        padding: 2rem 1.5rem;
       }
       .footer {
-        padding: 4rem 2rem 2rem 2rem;
+        padding: 4rem 1.5rem 2rem 1.5rem;
       }
       .footer-top {
         grid-template-columns: 1fr;
         gap: 3rem;
+        margin-bottom: 4rem;
       }
       .footer-bottom {
         flex-direction: column;
@@ -1899,40 +1957,35 @@
 
     @media (max-width: 768px) {
       .sticky-actions-bar {
-        bottom: 0;
-        right: 0;
-        left: 0;
-        width: 100%;
-        gap: 0;
-        border-top: 1px solid rgba(143, 175, 130, 0.2);
-        background-color: rgba(11, 20, 9, 0.95);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        padding: 0.8rem 1rem;
-        box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.5);
+        bottom: 20px;
+        right: 1.5rem;
+        left: 1.5rem;
+        width: auto;
+        gap: 0.8rem;
+        border: 1px solid rgba(143, 175, 130, 0.25);
+        border-radius: 50px;
+        background-color: rgba(11, 20, 9, 0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 0.6rem 0.8rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       }
       .sticky-btn {
         flex: 1;
         justify-content: center;
-        border-radius: 4px;
-        padding: 0.9rem;
+        border-radius: 30px !important;
+        padding: 0.8rem;
         font-size: 0.75rem;
         box-shadow: none;
       }
-      .sticky-btn-call {
-        border-radius: 30px 0 0 30px;
-      }
-      .sticky-btn-appt {
-        border-radius: 0 30px 30px 0;
-      }
       .footer {
-        padding-bottom: 7rem;
+        padding-bottom: calc(7rem + env(safe-area-inset-bottom, 0px));
       }
       .transformation-section {
-        padding: 6rem 2rem;
+        padding: 5rem 1.5rem;
       }
       .slider-container {
-        height: 400px;
+        height: clamp(240px, 50vw, 360px);
       }
     }
   </style>
