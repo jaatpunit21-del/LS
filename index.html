@@ -3,34 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TERRA & CO. — A luxury outdoor design and landscaping studio. We shape the land, you inherit the dream. Bespoke garden architecture and high-end hardscaping.">
+  <title>TERRA & CO. | Luxury Outdoor Design & Landscaping Studio</title>
   
-  <title>VELVET BREW — Luxury Specialty Coffee Experience</title>
-  <meta name="description" content="Immerse yourself in Velvet Brew, a high-end specialty coffee experience. Single-origin, hand-crafted, and set within a luxurious jazz-infused sanctuary.">
-  
-  <!-- Preconnect to Google Fonts for speed -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   
   <style>
-    /* Google Fonts Import */
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-
-    /* Design Tokens & Custom Properties */
+    /* ----------------------------------------------------
+       DESIGN SYSTEM & VARIABLES
+       ---------------------------------------------------- */
     :root {
-      --bg-espresso: #0D0A07;
-      --text-ivory: #F2EBD9;
-      --accent-gold: #C9A84C;
-      --highlight-rose: #D4856A;
-      --muted-sage: #6B7F6A;
-      --surface-card: #1A1410;
+      --bg-deep-forest: #0B1409;
+      --text-stone: #EDE8DF;
+      --accent-moss: #4A7C59;
+      --highlight-sage: #8FAF82;
+      --earth-brown: #8B6F47;
+      --card-surface: #111D0F;
+      --gold-detail: #C4A55A;
+      --gold-hover: #DFBE73;
+      --divider-color: rgba(143, 175, 130, 0.2);
       
-      --font-display: 'Playfair Display', serif;
-      --font-body: 'DM Sans', sans-serif;
-      --font-accent: 'Cormorant Garamond', serif;
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'Jost', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+      
+      --scroll-percent: 0%;
+      --scroll-y: 0px;
+      
+      --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-fast: all 0.3s ease;
     }
 
-    /* Core Styles & Resets */
-    * {
+    /* Reset & Base Styles */
+    *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -38,16 +46,37 @@
 
     html {
       scroll-behavior: smooth;
-      background-color: var(--bg-espresso);
-      color: var(--text-ivory);
+      background-color: var(--bg-deep-forest);
+      color: var(--text-stone);
       font-family: var(--font-body);
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
     body {
       overflow-x: hidden;
       line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition-fast);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      background: none;
+      border: none;
+      color: inherit;
     }
 
     /* Custom Scrollbar */
@@ -55,290 +84,1581 @@
       width: 8px;
     }
     ::-webkit-scrollbar-track {
-      background-color: var(--bg-espresso);
+      background: var(--bg-deep-forest);
     }
     ::-webkit-scrollbar-thumb {
-      background-color: rgba(201, 168, 76, 0.3);
+      background: var(--accent-moss);
       border-radius: 4px;
-      border: 2px solid var(--bg-espresso);
     }
     ::-webkit-scrollbar-thumb:hover {
-      background-color: var(--accent-gold);
+      background: var(--highlight-sage);
     }
 
-    /* Typography & Utilities */
-    h1, h2, h3, h4, h5, h6 {
-      font-weight: normal;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      position: relative;
-      z-index: 10;
-    }
-
-    .section-title {
+    /* Typography Utilities */
+    h1, h2, h3, h4 {
       font-family: var(--font-display);
-      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
-      color: var(--text-ivory);
-      text-align: center;
-      margin-bottom: 0.5rem;
-      font-style: italic;
-      letter-spacing: 0.02em;
+      font-weight: 300;
     }
 
-    .section-subtitle {
-      font-family: var(--font-accent);
-      font-variant: all-small-caps;
+    .italic-serif {
+      font-family: var(--font-display);
       font-style: italic;
-      font-size: 1rem;
-      color: var(--accent-gold);
-      letter-spacing: 0.25em;
-      text-align: center;
-      margin-bottom: 3.5rem;
     }
 
-    /* Horizontal Gold Divider */
-    .gold-divider {
-      border: 0;
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(201, 168, 76, 0.25) 50%, transparent);
-      margin: 4.5rem auto;
-      width: 80%;
-      max-width: 800px;
-      position: relative;
-      z-index: 10;
+    .label-mono {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--highlight-sage);
     }
 
     /* Scroll Progress Bar */
-    .scroll-progress {
+    #scroll-progress {
       position: fixed;
       top: 0;
       left: 0;
-      height: 3px;
-      width: 0%;
-      background-color: var(--accent-gold);
-      z-index: 10000;
-      transition: width 0.1s ease-out;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-moss), var(--gold-detail));
+      width: var(--scroll-percent);
+      z-index: 1000;
+      pointer-events: none;
+      transition: width 0.1s linear;
     }
 
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.1rem 2.4rem;
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-      border-radius: 2px;
-      cursor: pointer;
+    /* Divider */
+    .thin-divider {
+      width: 100%;
+      height: 1px;
+      background-color: var(--divider-color);
+      margin: 0;
     }
 
-    .btn-filled {
-      background-color: var(--accent-gold);
-      color: var(--bg-espresso);
-      border: 1px solid var(--accent-gold);
-    }
-
-    .btn-filled:hover {
-      background-color: transparent;
-      color: var(--accent-gold);
-      box-shadow: 0 8px 25px rgba(201, 168, 76, 0.25);
-    }
-
-    .btn-outline {
-      background-color: transparent;
-      color: var(--accent-gold);
-      border: 1px solid rgba(201, 168, 76, 0.4);
-    }
-
-    .btn-outline:hover {
-      background-color: var(--accent-gold);
-      color: var(--bg-espresso);
-      border-color: var(--accent-gold);
-      box-shadow: 0 8px 25px rgba(201, 168, 76, 0.25);
-    }
-
-    /* Intersection Observer Reveals */
+    /* ----------------------------------------------------
+       SCROLL ANIMATIONS (INTERSECTION OBSERVER)
+       ---------------------------------------------------- */
     .reveal {
       opacity: 0;
-      transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-      will-change: transform, opacity;
+      transform: translateY(40px);
+      transition: var(--transition-smooth);
     }
-    .reveal.reveal-left {
-      transform: translate3d(-40px, 0, 0);
-    }
-    .reveal.reveal-right {
-      transform: translate3d(40px, 0, 0);
-    }
-    .reveal.reveal-up {
-      transform: translate3d(0, 40px, 0);
-    }
+
     .reveal.active {
       opacity: 1;
-      transform: translate3d(0, 0, 0);
+      transform: translateY(0);
     }
 
-    /* Word Reveal Stagger Logic */
-    .word-mask {
-      display: inline-block;
-      overflow: hidden;
-      vertical-align: bottom;
-      margin-right: 0.25em;
-    }
-
-    .word-reveal {
-      display: inline-block;
-      transform: translate3d(0, 100%, 0);
+    .reveal-left {
       opacity: 0;
-      transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-      will-change: transform, opacity;
+      transform: translateX(-40px);
+      transition: var(--transition-smooth);
     }
 
-    .hero.loaded .word-reveal {
-      transform: translate3d(0, 0, 0);
+    .reveal-left.active {
       opacity: 1;
+      transform: translateX(0);
     }
 
-    /* 1. NAVBAR */
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: var(--transition-smooth);
+    }
+
+    .reveal-right.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .scale-up {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: var(--transition-smooth);
+    }
+
+    .scale-up.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Delay helpers */
+    .delay-1 { transition-delay: 0.15s; }
+    .delay-2 { transition-delay: 0.3s; }
+    .delay-3 { transition-delay: 0.45s; }
+
+    /* ----------------------------------------------------
+       NAVBAR
+       ---------------------------------------------------- */
     .navbar {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      padding: 1.8rem 4rem;
-      z-index: 1000;
+      padding: 2rem 4rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-sizing: border-box;
-      transition: padding 0.5s ease, background-color 0.5s ease, backdrop-filter 0.5s ease, border-bottom 0.5s ease;
-      border-bottom: 1px solid transparent;
+      z-index: 900;
+      transition: var(--transition-smooth);
     }
 
     .navbar.scrolled {
-      padding: 1.1rem 4rem;
-      background-color: rgba(13, 10, 7, 0.88);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+      padding: 1.2rem 4rem;
+      background-color: rgba(11, 20, 9, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(143, 175, 130, 0.1);
     }
 
-    .logo {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 1.4rem;
-      letter-spacing: 0.15em;
-      color: var(--text-ivory);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .logo-dot {
-      color: var(--accent-gold);
-      margin: 0 0.3rem;
-      vertical-align: middle;
-    }
-
-    .nav-links {
+    .nav-logo {
       display: flex;
-      gap: 3rem;
       align-items: center;
+      gap: 0.8rem;
+      font-size: 1.6rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--text-stone);
+      font-family: var(--font-display);
     }
 
-    .nav-link {
+    .nav-logo svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--gold-detail);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-logo:hover svg {
+      transform: rotate(-15deg) scale(1.15);
+      fill: var(--gold-hover);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .nav-item {
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
       font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.25em;
-      color: var(--text-ivory);
-      text-decoration: none;
       position: relative;
       padding: 0.5rem 0;
-      transition: color 0.3s ease;
+      color: rgba(237, 232, 223, 0.8);
     }
 
-    .nav-link:hover, .nav-link.active {
-      color: var(--accent-gold);
-    }
-
-    .nav-link::after {
+    .nav-item::after {
       content: '';
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 0;
-      height: 1px;
-      background-color: var(--accent-gold);
-      transition: width 0.3s ease;
-    }
-
-    .nav-link:hover::after, .nav-link.active::after {
       width: 100%;
+      height: 1px;
+      background-color: var(--gold-detail);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* Hamburger Menu Button */
-    .hamburger {
+    .nav-item:hover {
+      color: var(--text-stone);
+    }
+
+    .nav-item:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .nav-cta {
+      background-color: var(--accent-moss);
+      color: var(--text-stone);
+      padding: 0.75rem 1.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      box-shadow: 0 4px 15px rgba(11, 20, 9, 0.3);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition-fast);
+    }
+
+    .nav-cta::after {
+      content: '→';
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-cta:hover {
+      background-color: transparent;
+      border-color: var(--gold-detail);
+      color: var(--gold-detail);
+      box-shadow: 0 6px 20px rgba(196, 165, 90, 0.15);
+    }
+
+    .nav-cta:hover::after {
+      transform: translateX(4px);
+    }
+
+    /* Mobile Hamburger Menu */
+    .nav-toggle {
       display: none;
       flex-direction: column;
       justify-content: space-between;
-      width: 24px;
-      height: 16px;
-      background: transparent;
-      border: none;
+      width: 26px;
+      height: 18px;
       cursor: pointer;
-      z-index: 1002;
-      padding: 0;
+      z-index: 951;
     }
 
-    .hamburger-line {
+    .nav-toggle span {
+      display: block;
       width: 100%;
-      height: 1.5px;
-      background-color: var(--text-ivory);
-      transition: all 0.3s ease;
-      transform-origin: left center;
+      height: 2px;
+      background-color: var(--text-stone);
+      transition: var(--transition-fast);
     }
 
-    .hamburger.active .hamburger-line:nth-child(1) {
-      transform: rotate(45deg);
-      background-color: var(--accent-gold);
+    .nav-toggle.open span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
     }
 
-    .hamburger.active .hamburger-line:nth-child(2) {
-      width: 0%;
+    .nav-toggle.open span:nth-child(2) {
       opacity: 0;
     }
 
-    .hamburger.active .hamburger-line:nth-child(3) {
-      transform: rotate(-45deg);
-      background-color: var(--accent-gold);
+    .nav-toggle.open span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
     }
 
-    /* Mobile Sidebar Menu Overlay */
-    .nav-overlay {
+    .mobile-overlay {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
+      width: 100%;
       height: 100vh;
-      background-color: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(4px);
+      background-color: var(--bg-deep-forest);
+      z-index: 950;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2.5rem;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.5s ease;
-      z-index: 999;
+      transition: var(--transition-smooth);
     }
 
-    .nav-overlay.active {
+    .mobile-overlay.open {
       opacity: 1;
       pointer-events: auto;
+    }
+
+    .mobile-overlay .nav-item {
+      font-size: 1.5rem;
+      letter-spacing: 0.25em;
+    }
+
+    /* ----------------------------------------------------
+       HERO SECTION
+       ---------------------------------------------------- */
+    .hero-container {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 0 6rem;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 120%; /* Extra height to allow parallax movement */
+      background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800');
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+      transform: translateY(calc(var(--scroll-y) * 0.15px));
+      transition: transform 0.1s ease-out;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom, 
+        rgba(11, 20, 9, 0.4) 0%, 
+        rgba(11, 20, 9, 0.7) 60%, 
+        rgba(11, 20, 9, 0.95) 100%
+      );
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 800px;
+      margin-top: 5rem;
+    }
+
+    .hero-pretitle {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.85rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: heroFadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .hero-pretitle::before {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 1px;
+      background-color: var(--gold-detail);
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1.1;
+      margin-bottom: 2rem;
+      color: var(--text-stone);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: heroFadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    }
+
+    .hero-title em {
+      display: block;
+      font-weight: 300;
+      color: var(--highlight-sage);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 1.5vw, 1.4rem);
+      font-weight: 300;
+      color: rgba(237, 232, 223, 0.9);
+      margin-bottom: 3rem;
+      max-width: 600px;
+      opacity: 0;
+      transform: translateY(25px);
+      animation: heroFadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: heroFadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+    }
+
+    .btn {
+      padding: 1.1rem 2.4rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition-fast);
+    }
+
+    .btn-solid {
+      background-color: var(--accent-moss);
+      color: var(--text-stone);
+      box-shadow: 0 4px 20px rgba(74, 124, 89, 0.3);
+    }
+
+    .btn-solid:hover {
+      background-color: var(--gold-detail);
+      color: var(--bg-deep-forest);
+      box-shadow: 0 6px 25px rgba(196, 165, 90, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--text-stone);
+      color: var(--text-stone);
+    }
+
+    .btn-ghost:hover {
+      background-color: var(--text-stone);
+      color: var(--bg-deep-forest);
+      transform: translateY(-2px);
+    }
+
+    /* Scroll Hint */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      opacity: 0;
+      animation: heroFadeIn 1s ease-out 1.2s forwards;
+    }
+
+    .scroll-hint span {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: var(--highlight-sage);
+      text-transform: uppercase;
+    }
+
+    .scroll-hint-arrow {
+      width: 1px;
+      height: 50px;
+      background-color: rgba(143, 175, 130, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-hint-arrow::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 30%;
+      background-color: var(--gold-detail);
+      animation: scrollDownIndicator 2s infinite cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Floating Leaf Particles */
+    .leaf-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .leaf-particle {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      fill: var(--highlight-sage);
+      opacity: 0.4;
+      animation: driftDown 15s linear infinite;
+    }
+
+    /* Particle Variations */
+    .leaf-particle:nth-child(1) { left: 10%; width: 22px; height: 22px; animation-duration: 18s; animation-delay: 0s; fill: var(--accent-moss); }
+    .leaf-particle:nth-child(2) { left: 30%; width: 28px; height: 28px; animation-duration: 22s; animation-delay: 2s; }
+    .leaf-particle:nth-child(3) { left: 55%; width: 18px; height: 18px; animation-duration: 15s; animation-delay: 5s; fill: var(--earth-brown); }
+    .leaf-particle:nth-child(4) { left: 75%; width: 32px; height: 32px; animation-duration: 25s; animation-delay: 1s; }
+    .leaf-particle:nth-child(5) { left: 90%; width: 20px; height: 20px; animation-duration: 16s; animation-delay: 7s; }
+
+    /* Animations */
+    @keyframes heroFadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes heroFadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 0.7; }
+    }
+
+    @keyframes scrollDownIndicator {
+      0% { transform: translateY(-100%); }
+      60% { transform: translateY(350%); }
+      100% { transform: translateY(350%); }
+    }
+
+    @keyframes driftDown {
+      0% {
+        transform: translateY(-5vh) translateX(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.45;
+      }
+      90% {
+        opacity: 0.45;
+      }
+      100% {
+        transform: translateY(105vh) translateX(120px) rotate(420deg);
+        opacity: 0;
+      }
+    }
+
+    /* ----------------------------------------------------
+       MARQUEE STRIP
+       ---------------------------------------------------- */
+    .marquee-container {
+      background-color: #050804;
+      padding: 1.8rem 0;
+      overflow: hidden;
+      display: flex;
+      border-top: 1px solid var(--divider-color);
+      border-bottom: 1px solid var(--divider-color);
+    }
+
+    .marquee-content {
+      display: flex;
+      white-space: nowrap;
+      animation: marqueeRun 35s linear infinite;
+    }
+
+    .marquee-item {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      color: var(--highlight-sage);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .marquee-icon {
+      font-size: 1.2rem;
+      color: var(--gold-detail);
+    }
+
+    @keyframes marqueeRun {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ----------------------------------------------------
+       ABOUT / STORY SECTION
+       ---------------------------------------------------- */
+    .about-section {
+      padding: 10rem 6rem;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 7rem;
+      align-items: center;
+      position: relative;
+    }
+
+    .about-images-wrapper {
+      position: relative;
+      width: 100%;
+      height: 600px;
+    }
+
+    .about-img-main {
+      width: 80%;
+      height: 100%;
+      border-radius: 4px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+      filter: grayscale(15%);
+      transition: var(--transition-smooth);
+    }
+
+    .about-images-wrapper:hover .about-img-main {
+      filter: grayscale(0%);
+    }
+
+    .about-img-accent {
+      position: absolute;
+      bottom: -40px;
+      right: 10%;
+      width: 45%;
+      height: 250px;
+      border: 8px solid var(--bg-deep-forest);
+      border-radius: 4px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+      z-index: 10;
+      transform: translateY(calc(var(--scroll-y) * -0.04px));
+      transition: transform 0.1s ease-out;
+    }
+
+    .about-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-title {
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      line-height: 1.15;
+      margin-top: 1.5rem;
+      margin-bottom: 2.5rem;
+      color: var(--text-stone);
+    }
+
+    .about-body {
+      font-size: 1.05rem;
+      color: rgba(237, 232, 223, 0.85);
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .about-body p {
+      margin-bottom: 1.5rem;
+    }
+
+    .about-quote {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--gold-detail);
+      border-left: 2px solid var(--accent-moss);
+      padding-left: 1.5rem;
+      margin-bottom: 3rem;
+      line-height: 1.4;
+    }
+
+    /* Stats Grid */
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      border-top: 1px solid var(--divider-color);
+      padding-top: 2.5rem;
+    }
+
+    .stat-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: var(--gold-detail);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: rgba(237, 232, 223, 0.6);
+      text-transform: uppercase;
+    }
+
+    /* ----------------------------------------------------
+       SERVICES SECTION
+       ---------------------------------------------------- */
+    .services-section {
+      padding: 10rem 6rem;
+      background-color: #091007;
+      border-top: 1px solid var(--divider-color);
+      border-bottom: 1px solid var(--divider-color);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 5rem;
+    }
+
+    .section-title-wrap {
+      max-width: 600px;
+    }
+
+    .section-title {
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      line-height: 1.15;
+      margin-top: 1rem;
+    }
+
+    .section-desc {
+      max-width: 400px;
+      font-size: 1rem;
+      color: rgba(237, 232, 223, 0.7);
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .service-card {
+      background-color: var(--card-surface);
+      border: 1px solid rgba(143, 175, 130, 0.1);
+      border-radius: 4px;
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 480px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition-smooth);
+      cursor: pointer;
+    }
+
+    /* Hover background effect using a pseudo-element gradient */
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(74, 124, 89, 0.15) 0%, rgba(17, 29, 15, 0.8) 100%);
+      opacity: 0;
+      z-index: 1;
+      transition: var(--transition-smooth);
+    }
+
+    .service-card:hover {
+      border-color: var(--gold-detail);
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(11, 20, 9, 0.5);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-card-top {
+      position: relative;
+      z-index: 2;
+    }
+
+    .service-number {
+      font-family: var(--font-mono);
+      color: var(--gold-detail);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      display: block;
+    }
+
+    .service-icon {
+      width: 40px;
+      height: 40px;
+      fill: var(--highlight-sage);
+      margin-bottom: 2rem;
+      transition: var(--transition-smooth);
+    }
+
+    .service-card:hover .service-icon {
+      fill: var(--gold-detail);
+      transform: scale(1.1);
+    }
+
+    .service-card-bottom {
+      position: relative;
+      z-index: 2;
+    }
+
+    .service-title {
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.2;
+    }
+
+    .service-description {
+      font-size: 0.9rem;
+      color: rgba(237, 232, 223, 0.7);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .service-link {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--gold-detail);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .service-link::after {
+      content: '→';
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover .service-link::after {
+      transform: translateX(6px);
+    }
+
+    /* ----------------------------------------------------
+       PORTFOLIO / SELECTED WORKS
+       ---------------------------------------------------- */
+    .portfolio-section {
+      padding: 10rem 6rem;
+    }
+
+    .portfolio-filter-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .portfolio-filters {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .filter-btn {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      color: rgba(237, 232, 223, 0.5);
+      position: relative;
+      padding: 0.4rem 0;
+      transition: var(--transition-fast);
+    }
+
+    .filter-btn::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: var(--gold-detail);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .filter-btn.active {
+      color: var(--gold-detail);
+    }
+
+    .filter-btn.active::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* Asymmetric Grid Layout */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 3rem;
+    }
+
+    .portfolio-item {
+      grid-column: span 6;
+      height: 550px;
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    /* Making the grid asymmetric for an editorial spread vibe */
+    .portfolio-item:nth-child(2) {
+      grid-column: span 6;
+      height: 620px;
+      transform: translateY(40px);
+    }
+
+    .portfolio-item:nth-child(3) {
+      grid-column: span 7;
+      height: 580px;
+    }
+
+    .portfolio-item:nth-child(4) {
+      grid-column: span 5;
+      height: 500px;
+      transform: translateY(-40px);
+    }
+
+    /* Adjust portfolio items that are filtered out */
+    .portfolio-item.hidden {
+      display: none;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .portfolio-item-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .portfolio-item-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(11, 20, 9, 0) 20%,
+        rgba(11, 20, 9, 0.4) 60%,
+        rgba(11, 20, 9, 0.9) 100%
+      );
+      opacity: 0.8;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 3.5rem;
+      z-index: 2;
+      transition: var(--transition-smooth);
+    }
+
+    .portfolio-item:hover .portfolio-item-img {
+      transform: scale(1.05);
+    }
+
+    .portfolio-item:hover .portfolio-item-overlay {
+      opacity: 1;
+      background: linear-gradient(
+        to bottom,
+        rgba(11, 20, 9, 0.2) 0%,
+        rgba(11, 20, 9, 0.6) 50%,
+        rgba(11, 20, 9, 0.95) 100%
+      );
+    }
+
+    .portfolio-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.8rem;
+      transform: translateY(15px);
+      transition: var(--transition-smooth);
+    }
+
+    .portfolio-item-title {
+      font-size: 2.2rem;
+      color: var(--text-stone);
+      margin-bottom: 0.8rem;
+      line-height: 1.2;
+      transform: translateY(20px);
+      transition: var(--transition-smooth);
+    }
+
+    .portfolio-item-subtitle {
+      font-size: 0.9rem;
+      color: rgba(237, 232, 223, 0.7);
+      font-weight: 300;
+      transform: translateY(25px);
+      opacity: 0;
+      transition: var(--transition-smooth);
+    }
+
+    .portfolio-item:hover .portfolio-meta,
+    .portfolio-item:hover .portfolio-item-title {
+      transform: translateY(0);
+    }
+
+    .portfolio-item:hover .portfolio-item-subtitle {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* ----------------------------------------------------
+       DESIGN PHILOSOPHY / PROCESS
+       ---------------------------------------------------- */
+    .process-section {
+      padding: 10rem 6rem;
+      background-color: #091007;
+      border-top: 1px solid var(--divider-color);
+      border-bottom: 1px solid var(--divider-color);
+    }
+
+    .process-container {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 6rem;
+    }
+
+    .process-sidebar {
+      position: sticky;
+      top: 150px;
+      height: fit-content;
+    }
+
+    .process-steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .process-step-tab {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.5rem;
+      border-left: 2px solid rgba(143, 175, 130, 0.15);
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .process-step-tab.active {
+      border-color: var(--gold-detail);
+      background-color: rgba(17, 29, 15, 0.5);
+    }
+
+    .process-step-num {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--highlight-sage);
+      opacity: 0.6;
+      transition: var(--transition-fast);
+    }
+
+    .process-step-tab.active .process-step-num {
+      color: var(--gold-detail);
+      opacity: 1;
+    }
+
+    .process-step-name {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: rgba(237, 232, 223, 0.7);
+      transition: var(--transition-fast);
+    }
+
+    .process-step-tab.active .process-step-name {
+      color: var(--text-stone);
+      font-style: italic;
+    }
+
+    .process-content-panel {
+      background-color: var(--card-surface);
+      border: 1px solid rgba(143, 175, 130, 0.1);
+      border-radius: 4px;
+      padding: 4.5rem;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .process-detail-item {
+      display: none;
+      animation: fadeInEffect 0.6s forwards;
+    }
+
+    .process-detail-item.active {
+      display: block;
+    }
+
+    .process-detail-num {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      color: var(--gold-detail);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .process-detail-title {
+      font-size: 2.8rem;
+      margin-bottom: 2rem;
+      color: var(--text-stone);
+      line-height: 1.2;
+    }
+
+    .process-detail-desc {
+      font-size: 1.05rem;
+      color: rgba(237, 232, 223, 0.8);
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .process-detail-features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      border-top: 1px solid var(--divider-color);
+      padding-top: 2rem;
+    }
+
+    .feature-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .feature-title {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--highlight-sage);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .feature-desc {
+      font-size: 0.9rem;
+      color: rgba(237, 232, 223, 0.7);
+      font-weight: 300;
+    }
+
+    @keyframes fadeInEffect {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ----------------------------------------------------
+       INQUIRY FORM SECTION
+       ---------------------------------------------------- */
+    .contact-section {
+      padding: 10rem 6rem;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 7rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .contact-heading-wrap {
+      margin-bottom: 4rem;
+    }
+
+    .contact-title {
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      line-height: 1.15;
+      margin-top: 1rem;
+    }
+
+    .contact-coordinates {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .coordinate-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .coordinate-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--highlight-sage);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .coordinate-value {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--text-stone);
+    }
+
+    .coordinate-value a:hover {
+      color: var(--gold-detail);
+    }
+
+    /* Elegant Forms */
+    .inquiry-form-card {
+      background-color: var(--card-surface);
+      border: 1px solid rgba(143, 175, 130, 0.1);
+      border-radius: 4px;
+      padding: 4.5rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 45px rgba(11, 20, 9, 0.4);
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid rgba(143, 175, 130, 0.3);
+      font-size: 1.05rem;
+      color: var(--text-stone);
+      transition: var(--transition-fast);
+    }
+
+    .form-label {
+      position: absolute;
+      top: 0.8rem;
+      left: 0;
+      font-size: 1rem;
+      color: rgba(237, 232, 223, 0.5);
+      pointer-events: none;
+      transition: var(--transition-fast);
+    }
+
+    /* Float label effect */
+    .form-input:focus ~ .form-label,
+    .form-input:not(:placeholder-shown) ~ .form-label {
+      top: -1.2rem;
+      font-size: 0.75rem;
+      color: var(--gold-detail);
+      font-family: var(--font-mono);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-bottom-color: var(--gold-detail);
+    }
+
+    /* Select styling */
+    select.form-input {
+      background-color: transparent;
+      border-radius: 0;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    .select-arrow {
+      position: absolute;
+      right: 0;
+      top: 1rem;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid rgba(237, 232, 223, 0.6);
+      pointer-events: none;
+    }
+
+    .form-input:focus ~ .select-arrow {
+      border-top-color: var(--gold-detail);
+      transform: rotate(180deg);
+    }
+
+    /* Customizing select options */
+    select.form-input option {
+      background-color: var(--bg-deep-forest);
+      color: var(--text-stone);
+      padding: 0.5rem;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background-color: var(--accent-moss);
+      color: var(--text-stone);
+      padding: 1.2rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(74, 124, 89, 0.2);
+      transition: var(--transition-smooth);
+      position: relative;
+      z-index: 2;
+    }
+
+    .btn-submit:hover {
+      background-color: var(--gold-detail);
+      color: var(--bg-deep-forest);
+      box-shadow: 0 6px 20px rgba(196, 165, 90, 0.35);
+      transform: translateY(-2px);
+    }
+
+    /* Success message block styling */
+    .form-success-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--card-surface);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 3rem;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 10;
+      transition: var(--transition-smooth);
+    }
+
+    .form-success-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .success-icon {
+      width: 70px;
+      height: 70px;
+      fill: var(--gold-detail);
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: scale(0.7);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+    }
+
+    .form-success-overlay.active .success-icon {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .success-title {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-stone);
+    }
+
+    .success-text {
+      font-size: 1rem;
+      color: rgba(237, 232, 223, 0.75);
+      font-weight: 300;
+      max-width: 350px;
+      line-height: 1.6;
+    }
+
+    /* ----------------------------------------------------
+       FOOTER
+       ---------------------------------------------------- */
+    .footer {
+      background-color: #050804;
+      padding: 6rem 6rem 3rem 6rem;
+      border-top: 1px solid var(--divider-color);
+      position: relative;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, 1fr);
+      gap: 4rem;
+      margin-bottom: 6rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      font-family: var(--font-display);
+    }
+
+    .footer-logo svg {
+      width: 28px;
+      height: 28px;
+      fill: var(--gold-detail);
+    }
+
+    .footer-tagline {
+      font-size: 0.95rem;
+      color: rgba(237, 232, 223, 0.6);
+      max-width: 280px;
+      font-weight: 300;
+    }
+
+    .footer-title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--highlight-sage);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      display: block;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .footer-link {
+      font-size: 0.9rem;
+      color: rgba(237, 232, 223, 0.7);
+      font-weight: 300;
+      display: inline-block;
+    }
+
+    .footer-link:hover {
+      color: var(--gold-detail);
+      transform: translateX(3px);
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .social-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(143, 175, 130, 0.2);
+      border-radius: 50%;
+      fill: rgba(237, 232, 223, 0.8);
+      transition: var(--transition-fast);
+    }
+
+    .social-icon:hover {
+      fill: var(--bg-deep-forest);
+      background-color: var(--gold-detail);
+      border-color: var(--gold-detail);
+      transform: translateY(-3px);
+    }
+
+    .social-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Footer Bottom */
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(143, 175, 130, 0.1);
+      padding-top: 3rem;
+      font-size: 0.8rem;
+      color: rgba(237, 232, 223, 0.4);
+      font-family: var(--font-mono);
+    }
+
+    .back-to-top {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--highlight-sage);
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .back-to-top:hover {
+      color: var(--gold-detail);
+    }
+
+    .back-to-top-arrow {
+      width: 25px;
+      height: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid rgba(143, 175, 130, 0.2);
+      border-radius: 50%;
+      transition: var(--transition-fast);
+    }
+
+    .back-to-top:hover .back-to-top-arrow {
+      transform: translateY(-3px);
+      border-color: var(--gold-detail);
+    }
+
+    /* ----------------------------------------------------
+       RESPONSIVE BREAKPOINTS
+       ---------------------------------------------------- */
+    @media (max-width: 1200px) {
+      .navbar, .navbar.scrolled {
+        padding: 1.5rem 3rem;
+      }
+      .hero-container {
+        padding: 0 4rem;
+      }
+      .about-section, .services-section, .portfolio-section, .process-section, .contact-section {
+        padding: 8rem 4rem;
+      }
+      .about-section {
+        gap: 4rem;
+      }
+      .about-images-wrapper {
+        height: 500px;
+      }
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .service-card {
+        height: 420px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .about-section {
+        grid-template-columns: 1fr;
+        gap: 5rem;
+      }
+      .about-images-wrapper {
+        height: 550px;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .process-container {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+      }
+      .process-sidebar {
+        position: relative;
+        top: 0;
+      }
+      .process-steps-list {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+      }
+      .process-step-tab {
+        flex-shrink: 0;
+        padding: 1rem;
+      }
+      .contact-section {
+        grid-template-columns: 1fr;
+        gap: 5rem;
+      }
+      .contact-info {
+        gap: 4rem;
+      }
+      .footer-top {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 768px) {
@@ -348,2547 +1668,804 @@
       .navbar.scrolled {
         padding: 1rem 2rem;
       }
-      .hamburger {
-        display: flex;
-      }
-      .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 80%;
-        max-width: 320px;
-        height: 100vh;
-        background-color: var(--bg-espresso);
-        border-left: 1px solid rgba(201, 168, 76, 0.1);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 3rem;
-        transition: right 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-        z-index: 1001;
-      }
-      .nav-links.open {
-        right: 0;
-      }
-    }
-
-
-    /* 2. HERO SECTION */
-    .hero {
-      position: relative;
-      height: 100vh;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    /* Parallax Background Image with top offset buffer to prevent gaps */
-    .hero-image-bg {
-      position: absolute;
-      top: -10%;
-      left: 0;
-      width: 100%;
-      height: 120%;
-      background-image: url('./hero_background.png');
-      background-size: cover;
-      background-position: center;
-      z-index: -1;
-      opacity: 0.38;
-      filter: brightness(0.55) contrast(1.1) saturate(0.85);
-      will-change: transform;
-    }
-
-    /* Aurora Looping CSS Gradient */
-    .hero-aurora-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      overflow: hidden;
-      z-index: 0;
-    }
-
-    .aurora-blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: 0.12;
-      mix-blend-mode: screen;
-      animation: float-blob 22s infinite alternate ease-in-out;
-      will-change: transform;
-    }
-
-    .blob-1 {
-      top: -10%;
-      left: 15%;
-      width: 45vw;
-      height: 45vw;
-      background: radial-gradient(circle, var(--accent-gold) 0%, transparent 70%);
-      animation-duration: 25s;
-    }
-
-    .blob-2 {
-      bottom: -15%;
-      right: 10%;
-      width: 55vw;
-      height: 55vw;
-      background: radial-gradient(circle, var(--highlight-rose) 0%, transparent 70%);
-      animation-duration: 32s;
-      animation-delay: -7s;
-    }
-
-    .blob-3 {
-      top: 25%;
-      left: 45%;
-      width: 38vw;
-      height: 38vw;
-      background: radial-gradient(circle, #5c4b31 0%, transparent 70%);
-      animation-duration: 20s;
-      animation-delay: -12s;
-    }
-
-    @keyframes float-blob {
-      0% {
-        transform: translate3d(0, 0, 0) scale(1);
-      }
-      50% {
-        transform: translate3d(6vw, -5vh, 0) scale(1.15);
-      }
-      100% {
-        transform: translate3d(-3vw, 6vh, 0) scale(0.9);
-      }
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 10;
-      text-align: center;
-      max-width: 950px;
-      padding: 0 2rem;
-      margin-top: 40px; /* Offset navigation bar visual weight */
-      will-change: transform, opacity;
-    }
-
-    .hero-headline {
-      font-family: var(--font-display);
-      font-size: clamp(2.8rem, 7.5vw, 5.8rem);
-      font-style: italic;
-      line-height: 1.12;
-      color: var(--text-ivory);
-      letter-spacing: -0.01em;
-      margin-bottom: 1.5rem;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.6);
-    }
-
-    .hero-subtext {
-      font-family: var(--font-accent);
-      font-style: italic;
-      font-size: clamp(1.2rem, 3vw, 1.8rem);
-      letter-spacing: 0.05em;
-      color: var(--accent-gold);
-      margin-bottom: 3.5rem;
-    }
-
-    .hero-ctas {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    /* Floating SVG Steam Lines */
-    .hero-steam {
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 220px;
-      height: 300px;
-      pointer-events: none;
-      z-index: 1;
-      opacity: 0.4;
-    }
-
-    .steam-line {
-      stroke-dasharray: 240;
-      stroke-dashoffset: 240;
-      animation: rise-steam 7s infinite linear;
-      will-change: stroke-dashoffset, opacity;
-    }
-
-    .line-1 {
-      animation-delay: 0s;
-      animation-duration: 7s;
-    }
-
-    .line-2 {
-      animation-delay: 2.2s;
-      animation-duration: 5.8s;
-    }
-
-    .line-3 {
-      animation-delay: 4.5s;
-      animation-duration: 8s;
-    }
-
-    @keyframes rise-steam {
-      0% {
-        stroke-dashoffset: 240;
-        opacity: 0;
-      }
-      15% {
-        opacity: 0.6;
-      }
-      80% {
-        opacity: 0.6;
-      }
-      100% {
-        stroke-dashoffset: 0;
-        opacity: 0;
-      }
-    }
-
-
-    /* 3. MARQUEE STRIP */
-    .marquee-container {
-      overflow: hidden;
-      white-space: nowrap;
-      background-color: #120E0A;
-      border-top: 1px solid rgba(201, 168, 76, 0.12);
-      border-bottom: 1px solid rgba(201, 168, 76, 0.12);
-      padding: 1.2rem 0;
-      display: flex;
-      z-index: 20;
-      position: relative;
-    }
-
-    .marquee-track {
-      display: flex;
-      width: max-content;
-      animation: marquee-scroll 32s linear infinite;
-    }
-
-    .marquee-items {
-      display: flex;
-      gap: 3rem;
-      padding-right: 3rem;
-    }
-
-    .marquee-item {
-      font-family: var(--font-body);
-      font-size: 0.82rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.25em;
-      color: var(--accent-gold);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    @keyframes marquee-scroll {
-      0% {
-        transform: translate3d(0, 0, 0);
-      }
-      100% {
-        transform: translate3d(-50%, 0, 0);
-      }
-    }
-
-
-    /* 4. ABOUT / STORY SECTION */
-    .story-section {
-      padding: 5.5rem 0;
-      position: relative;
-    }
-
-    .story-container {
-      display: grid;
-      grid-template-columns: 1fr 1px 1.2fr 1.2fr;
-      gap: 3.5rem;
-      align-items: center;
-    }
-
-    .story-quote-wrapper {
-      padding-right: 1rem;
-    }
-
-    .story-quote {
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 4.5vw, 3.6rem);
-      font-style: italic;
-      line-height: 1.15;
-      color: var(--text-ivory);
-      letter-spacing: -0.02em;
-    }
-
-    .story-divider {
-      background: linear-gradient(to bottom, transparent, var(--accent-gold), transparent);
-      height: 100%;
-      min-height: 250px;
-      width: 1px;
-    }
-
-    .story-text {
-      font-family: var(--font-body);
-      font-size: 1.05rem;
-      font-weight: 300;
-      line-height: 1.85;
-      color: rgba(242, 235, 217, 0.8);
-      padding: 0 1rem;
-    }
-
-    .story-text p {
-      margin-bottom: 1.5rem;
-    }
-
-    .story-text p:last-child {
-      margin-bottom: 0;
-    }
-
-    .story-highlight {
-      color: var(--accent-gold);
-      font-weight: 600;
-    }
-
-    /* Asymmetric Editorial Image Frame */
-    .story-image-wrapper {
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    .editorial-image-frame {
-      position: relative;
-      width: 100%;
-      max-width: 320px;
-      height: 440px;
-      overflow: hidden;
-      border-radius: 4px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-    }
-
-    .editorial-image-frame img {
-      width: 100%;
-      height: 120%;
-      object-fit: cover;
-      will-change: transform;
-    }
-
-    .image-overlay-border {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      right: -15px;
-      bottom: -15px;
-      border: 1px solid var(--accent-gold);
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    @media (max-width: 992px) {
-      .story-container {
-        grid-template-columns: 1fr 1px 1.2fr;
-        gap: 3rem;
-      }
-      .story-image-wrapper {
+      .nav-menu, .navbar .nav-cta {
         display: none;
       }
-    }
-
-    @media (max-width: 768px) {
-      .story-section {
-        padding: 4.5rem 0;
+      .nav-toggle {
+        display: flex;
       }
-      .story-container {
-        grid-template-columns: 1fr;
-        gap: 3rem;
+      .hero-container {
+        padding: 0 2rem;
       }
-      .story-quote-wrapper {
-        padding-right: 0;
-        text-align: center;
+      .about-section, .services-section, .portfolio-section, .process-section, .contact-section {
+        padding: 6rem 2rem;
       }
-      .story-divider {
-        background: linear-gradient(to right, transparent, var(--accent-gold), transparent);
-        height: 1px;
-        width: 100%;
-        min-height: 1px;
+      .about-images-wrapper {
+        height: 400px;
       }
-      .story-text {
-        padding: 0;
-        text-align: center;
-      }
-    }
-
-
-    /* 5. SIGNATURE MENU */
-    .menu-section {
-      padding: 5.5rem 0;
-      background-color: rgba(13, 10, 7, 0.3);
-    }
-
-    /* Menu Tabs */
-    .menu-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 4rem;
-      flex-wrap: wrap;
-    }
-
-    .tab-btn {
-      background: transparent;
-      border: 1px solid rgba(201, 168, 76, 0.25);
-      color: rgba(242, 235, 217, 0.7);
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      padding: 0.8rem 2rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      border-radius: 30px;
-    }
-
-    .tab-btn:hover {
-      border-color: var(--accent-gold);
-      color: var(--text-ivory);
-    }
-
-    .tab-btn.active {
-      background-color: var(--accent-gold);
-      border-color: var(--accent-gold);
-      color: var(--bg-espresso);
-      box-shadow: 0 4px 15px rgba(201, 168, 76, 0.25);
-    }
-
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2.5rem;
-    }
-
-    .menu-card {
-      background-color: var(--surface-card);
-      border: 1px solid rgba(242, 235, 217, 0.04);
-      border-radius: 8px;
-      padding: 2.2rem;
-      position: relative;
-      transition: border-color 0.4s, box-shadow 0.4s, transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s;
-      transform-style: preserve-3d;
-      will-change: transform, box-shadow, border-color, opacity;
-      cursor: pointer;
-    }
-
-    .menu-card.tilting {
-      transition: border-color 0.4s, box-shadow 0.4s, transform 0.05s linear;
-    }
-
-    .menu-card:hover {
-      border-color: rgba(201, 168, 76, 0.35);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(201, 168, 76, 0.12);
-    }
-
-    /* Menu Card Image Wrapper instead of Emoji circles */
-    .menu-card-image-wrapper {
-      width: 100%;
-      height: 180px;
-      overflow: hidden;
-      border-radius: 6px;
-      margin-bottom: 1.5rem;
-      border: 1px solid rgba(201, 168, 76, 0.08);
-      position: relative;
-      transform: translateZ(15px);
-    }
-
-    .menu-card-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-
-    .menu-card:hover .menu-card-image {
-      transform: scale(1.08);
-    }
-
-    .menu-card-title {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      margin-bottom: 0.6rem;
-      color: var(--text-ivory);
-      transform: translateZ(25px);
-    }
-
-    .menu-card-desc {
-      font-family: var(--font-body);
-      font-size: 0.88rem;
-      font-weight: 300;
-      color: rgba(242, 235, 217, 0.65);
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
-      transform: translateZ(10px);
-    }
-
-    .menu-card-price {
-      font-family: var(--font-accent);
-      font-size: 1.25rem;
-      font-style: italic;
-      color: var(--accent-gold);
-      font-weight: 600;
-      transform: translateZ(20px);
-    }
-
-    @media (max-width: 992px) {
-      .menu-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .portfolio-grid {
         gap: 2rem;
       }
-    }
-
-    @media (max-width: 600px) {
-      .menu-grid {
+      .portfolio-item {
+        grid-column: span 12 !important;
+        height: 400px !important;
+        transform: none !important;
+      }
+      .portfolio-item-overlay {
+        padding: 2rem;
+      }
+      .portfolio-item-title {
+        font-size: 1.8rem;
+      }
+      .services-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
       }
-      .menu-section {
-        padding: 4.5rem 0;
+      .process-content-panel {
+        padding: 2.5rem;
       }
-    }
-
-    /* Slow Bar Pour-over clinic section styles */
-    .slowbar-section {
-      padding: 5.5rem 0;
-    }
-
-    .slowbar-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 5rem;
-      align-items: center;
-    }
-
-    .slowbar-tag {
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.20em;
-      color: var(--accent-gold);
-      text-transform: uppercase;
-    }
-
-    .slowbar-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
-      font-style: italic;
-      margin: 1rem 0;
-      color: var(--text-ivory);
-    }
-
-    .slowbar-desc {
-      font-family: var(--font-body);
-      font-size: 1.05rem;
-      font-weight: 300;
-      line-height: 1.85;
-      color: rgba(242, 235, 217, 0.75);
-    }
-
-    .slowbar-image-frame {
-      position: relative;
-      overflow: hidden;
-      height: 440px;
-      border-radius: 4px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-    }
-
-    .slowbar-image-frame img {
-      width: 100%;
-      height: 120%;
-      object-fit: cover;
-      will-change: transform;
-    }
-
-    @media (max-width: 768px) {
-      .slowbar-layout {
-        grid-template-columns: 1fr;
-        gap: 3rem;
+      .process-detail-title {
+        font-size: 2.2rem;
       }
-      .slowbar-image-frame {
-        height: 320px;
+      .inquiry-form-card {
+        padding: 2.5rem;
       }
-      .slowbar-section {
-        padding: 4.5rem 0;
-      }
-    }
-
-    /* Pastry bakery section styles */
-    .pastry-section {
-      padding: 5.5rem 0;
-      background-color: rgba(26, 20, 16, 0.15);
-    }
-
-    .pastry-layout {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-
-    .pastry-tag {
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.20em;
-      color: var(--accent-gold);
-      text-transform: uppercase;
-    }
-
-    .pastry-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
-      font-style: italic;
-      margin: 1rem 0;
-      color: var(--text-ivory);
-    }
-
-    .pastry-desc {
-      font-family: var(--font-body);
-      font-size: 1.05rem;
-      font-weight: 300;
-      line-height: 1.85;
-      color: rgba(242, 235, 217, 0.75);
-    }
-
-    .pastry-image-frame {
-      position: relative;
-      overflow: hidden;
-      height: 440px;
-      border-radius: 4px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-    }
-
-    .pastry-image-frame img {
-      width: 100%;
-      height: 120%;
-      object-fit: cover;
-      will-change: transform;
-    }
-
-    @media (max-width: 768px) {
-      .pastry-layout {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-      .pastry-image-frame {
-        order: 2;
-        height: 320px;
-      }
-      .pastry-content {
-        order: 1;
-      }
-      .pastry-section {
-        padding: 4.5rem 0;
-      }
-    }
-
-
-    /* Right Sidebar Customization Panel */
-    .sidebar-panel {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 100%;
-      max-width: 480px;
-      height: 100vh;
-      background-color: #120E0A;
-      border-left: 1px solid rgba(201, 168, 76, 0.2);
-      z-index: 10000;
-      transform: translate3d(100%, 0, 0);
-      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-      box-shadow: -15px 0 45px rgba(0, 0, 0, 0.6);
-      padding: 3rem 2.5rem;
-      overflow-y: auto;
-    }
-
-    .sidebar-panel.open {
-      transform: translate3d(0, 0, 0);
-    }
-
-    .sidebar-close {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      font-size: 2.2rem;
-      background: transparent;
-      border: none;
-      color: var(--text-ivory);
-      cursor: pointer;
-      line-height: 1;
-      transition: color 0.3s;
-    }
-
-    .sidebar-close:hover {
-      color: var(--accent-gold);
-    }
-
-    .sidebar-content {
-      margin-top: 1rem;
-    }
-
-    /* Detail Panel Image Header */
-    .sidebar-item-image-wrapper {
-      width: 100%;
-      height: 200px;
-      overflow: hidden;
-      border-radius: 6px;
-      margin-bottom: 1.5rem;
-      border: 1px solid rgba(201, 168, 76, 0.15);
-      position: relative;
-    }
-
-    .sidebar-item-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .sidebar-item-name {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      font-style: italic;
-      margin-bottom: 0.8rem;
-      color: var(--text-ivory);
-    }
-
-    .sidebar-item-desc {
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      font-weight: 300;
-      color: rgba(242, 235, 217, 0.7);
-      line-height: 1.7;
-    }
-
-    .sidebar-divider {
-      border: 0;
-      height: 1px;
-      background: linear-gradient(to right, rgba(201, 168, 76, 0.3), transparent);
-      margin: 2rem 0;
-    }
-
-    .option-group {
-      margin-bottom: 1.8rem;
-    }
-
-    .option-title {
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--accent-gold);
-      margin-bottom: 0.8rem;
-    }
-
-    .option-selectors {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-
-    .option-btn {
-      background-color: var(--surface-card);
-      border: 1px solid rgba(242, 235, 217, 0.08);
-      color: rgba(242, 235, 217, 0.8);
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      border-radius: 4px;
-    }
-
-    .option-btn:hover {
-      border-color: rgba(201, 168, 76, 0.4);
-      color: var(--text-ivory);
-    }
-
-    .option-btn.active {
-      background-color: rgba(201, 168, 76, 0.12);
-      border-color: var(--accent-gold);
-      color: var(--accent-gold);
-    }
-
-    .ticket-container {
-      background-color: #0D0A07;
-      border: 1px dashed rgba(201, 168, 76, 0.25);
-      padding: 1.2rem;
-      border-radius: 6px;
-      margin: 2.5rem 0;
-      position: relative;
-    }
-
-    .ticket-header {
-      display: flex;
-      justify-content: space-between;
-      font-family: var(--font-body);
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      color: rgba(242, 235, 217, 0.55);
-      margin-bottom: 0.8rem;
-    }
-
-    .ticket-body {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-
-    .ticket-row {
-      display: flex;
-      justify-content: space-between;
-      font-family: var(--font-body);
-      font-size: 0.78rem;
-      color: rgba(242, 235, 217, 0.75);
-    }
-
-    .ticket-row span:last-child {
-      font-weight: 500;
-      color: var(--text-ivory);
-    }
-
-    .ticket-dash {
-      border: 0;
-      border-top: 1px dotted rgba(201, 168, 76, 0.25);
-      margin: 0.6rem 0;
-    }
-
-    .ticket-total {
-      font-size: 0.95rem;
-      color: var(--accent-gold);
-      font-weight: 700;
-    }
-
-    .ticket-total span:last-child {
-      color: var(--accent-gold);
-    }
-
-    .ticket-barcode {
-      font-family: monospace;
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-align: center;
-      color: rgba(242, 235, 217, 0.25);
-      margin-top: 1.2rem;
-    }
-
-    .sidebar-action-btn {
-      width: 100%;
-    }
-
-
-    /* 6. EXPERIENCE SECTION */
-    .experience-section {
-      padding: 5.5rem 0;
-    }
-
-    .experience-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 4rem;
-    }
-
-    .experience-pillar {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .experience-pillar.align-left {
-      text-align: left;
-      align-items: flex-start;
-    }
-
-    .experience-pillar.align-center {
-      text-align: center;
-      align-items: center;
-    }
-
-    .experience-pillar.align-right {
-      text-align: right;
-      align-items: flex-end;
-    }
-
-    .experience-num {
-      font-family: var(--font-accent);
-      font-size: 3.2rem;
-      font-style: italic;
-      font-weight: 300;
-      color: var(--accent-gold);
-      margin-bottom: 1rem;
-      opacity: 0.6;
-      line-height: 1;
-    }
-
-    .experience-pillar-title {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
-      margin-bottom: 1.2rem;
-      color: var(--text-ivory);
-    }
-
-    .experience-desc {
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      font-weight: 300;
-      line-height: 1.8;
-      color: rgba(242, 235, 217, 0.7);
-      max-width: 320px;
-    }
-
-    @media (max-width: 768px) {
-      .experience-section {
-        padding: 4.5rem 0;
-      }
-      .experience-grid {
-        grid-template-columns: 1fr;
-        gap: 3.5rem;
-      }
-      .experience-pillar.align-left,
-      .experience-pillar.align-center,
-      .experience-pillar.align-right {
-        text-align: center;
-        align-items: center;
-      }
-    }
-
-
-    /* 7. TESTIMONIALS CAROUSEL */
-    .testimonials-section {
-      padding: 5.5rem 0;
-      background-color: rgba(26, 20, 16, 0.3);
-    }
-
-    .carousel-container {
-      max-width: 850px;
-      margin: 0 auto;
-      position: relative;
-      overflow: hidden;
-      padding: 1rem 0;
-    }
-
-    .carousel-track {
-      display: flex;
-      scroll-snap-type: x mandatory;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      cursor: grab;
-    }
-
-    .carousel-track:active {
-      cursor: grabbing;
-    }
-
-    .carousel-track::-webkit-scrollbar {
-      display: none;
-    }
-
-    .testimonial-card {
-      flex: 0 0 100%;
-      width: 100%;
-      scroll-snap-align: start;
-      text-align: center;
-      padding: 1.5rem 3rem;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      user-select: none;
-    }
-
-    .quote-mark {
-      font-family: var(--font-display);
-      font-size: 5.5rem;
-      color: var(--accent-gold);
-      line-height: 1;
-      height: 3rem;
-      margin-bottom: 0.5rem;
-      opacity: 0.8;
-    }
-
-    .testimonial-text {
-      font-family: var(--font-accent);
-      font-style: italic;
-      font-size: clamp(1.4rem, 2.5vw, 1.95rem);
-      line-height: 1.65;
-      color: var(--text-ivory);
-      margin-bottom: 2.2rem;
-      max-width: 720px;
-      font-weight: 300;
-    }
-
-    .testimonial-author {
-      font-family: var(--font-accent);
-      font-variant: all-small-caps;
-      font-style: italic;
-      font-size: 1.15rem;
-      letter-spacing: 0.18em;
-      color: var(--highlight-rose);
-      font-weight: 600;
-    }
-
-    .carousel-indicators {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 2.5rem;
-    }
-
-    .indicator {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background-color: rgba(242, 235, 217, 0.2);
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.3s;
-    }
-
-    .indicator.active {
-      background-color: var(--accent-gold);
-      transform: scale(1.4);
-    }
-
-    @media (max-width: 768px) {
-      .testimonials-section {
-        padding: 4.5rem 0;
-      }
-      .testimonial-card {
-        padding: 1rem 1.5rem;
-      }
-    }
-
-
-    /* 8. RESERVATION CTA & BOOKING WIDGET */
-    .reservation-section {
-      position: relative;
-      padding: 6.5rem 0;
-      overflow: hidden;
-      /* Subtle gold-rose-dark overlay on top of dark espresso background */
-      background: linear-gradient(135deg, rgba(201, 168, 76, 0.06) 0%, rgba(212, 133, 106, 0.03) 50%, rgba(13, 10, 7, 0) 100%), var(--bg-espresso);
-      border-top: 1px solid rgba(201, 168, 76, 0.1);
-      border-bottom: 1px solid rgba(201, 168, 76, 0.1);
-      text-align: center;
-    }
-
-    .reserve-headline {
-      font-family: var(--font-display);
-      font-size: clamp(2.4rem, 6vw, 4.5rem);
-      font-style: italic;
-      line-height: 1.2;
-      margin-bottom: 2rem;
-      color: var(--text-ivory);
-    }
-
-    /* Booking widget container */
-    .booking-widget {
-      max-width: 600px;
-      margin: 3.5rem auto 0 auto;
-      background-color: var(--surface-card);
-      border: 1px solid rgba(201, 168, 76, 0.15);
-      border-radius: 8px;
-      padding: 3rem;
-      text-align: left;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-      position: relative;
-      z-index: 10;
-    }
-
-    .booking-step {
-      display: none;
-    }
-
-    .booking-step.active {
-      display: block;
-    }
-
-    .booking-widget-title {
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      font-style: italic;
-      margin-bottom: 2rem;
-      text-align: center;
-      color: var(--text-ivory);
-    }
-
-    .booking-group {
-      margin-bottom: 1.8rem;
-    }
-
-    .booking-label {
-      font-family: var(--font-body);
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--accent-gold);
-      display: block;
-      margin-bottom: 0.8rem;
-    }
-
-    .date-selector, .time-selector, .party-selector {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-
-    .booking-select-btn {
-      background-color: #0d0a07;
-      border: 1px solid rgba(242, 235, 217, 0.08);
-      color: rgba(242, 235, 217, 0.8);
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      border-radius: 4px;
-    }
-
-    .booking-select-btn:hover {
-      border-color: rgba(201, 168, 76, 0.4);
-      color: var(--text-ivory);
-    }
-
-    .booking-select-btn.active {
-      background-color: rgba(201, 168, 76, 0.12);
-      border-color: var(--accent-gold);
-      color: var(--accent-gold);
-    }
-
-    .booking-action-btn {
-      width: 100%;
-      margin-top: 1rem;
-    }
-
-    .success-ticket {
-      background-color: #0D0A07;
-      border-color: var(--accent-gold);
-    }
-
-    .success-message {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: 1.15rem;
-      color: var(--accent-gold);
-      text-align: center;
-      margin: 1.2rem 0;
-      line-height: 1.45;
-    }
-
-    .reservation-details {
-      margin-top: 4.5rem;
-      display: flex;
-      justify-content: center;
-      gap: 2.5rem;
-      flex-wrap: wrap;
-      font-family: var(--font-accent);
-      font-size: 1.1rem;
-      font-style: italic;
-      color: rgba(242, 235, 217, 0.6);
-      letter-spacing: 0.05em;
-    }
-
-    .detail-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .detail-icon {
-      color: var(--accent-gold);
-      font-style: normal;
-    }
-
-    @media (max-width: 768px) {
-      .reservation-section {
-        padding: 4.5rem 0;
-      }
-      .booking-widget {
-        padding: 2rem 1.5rem;
-      }
-      .reservation-details {
-        flex-direction: column;
-        gap: 1.2rem;
-        align-items: center;
-      }
-    }
-
-    /* Google Map Container */
-    .map-container {
-      max-width: 800px;
-      margin: 4rem auto 0 auto;
-      border: 1px solid rgba(201, 168, 76, 0.15);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-      position: relative;
-      background-color: var(--bg-espresso);
-    }
-
-    .map-container iframe {
-      display: block;
-      width: 100%;
-      height: 320px;
-      filter: invert(90%) hue-rotate(180deg) brightness(85%) contrast(110%) grayscale(30%);
-      opacity: 0.85;
-      transition: opacity 0.3s ease, filter 0.3s ease;
-    }
-
-    .map-container:hover iframe {
-      opacity: 0.95;
-      filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(110%) grayscale(10%);
-    }
-
-    .map-overlay {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      z-index: 12;
-    }
-
-    .map-directions-btn {
-      background-color: rgba(13, 10, 7, 0.85) !important;
-      backdrop-filter: blur(8px);
-      padding: 0.75rem 1.25rem !important;
-      font-size: 0.85rem !important;
-      border-color: var(--accent-gold) !important;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    }
-    
-    .map-directions-btn:hover {
-      background-color: var(--accent-gold) !important;
-      color: var(--bg-espresso) !important;
-    }
-
-
-    /* 9. FOOTER */
-    .footer {
-      background-color: #080605;
-      padding: 5.5rem 0 3rem 0;
-      border-top: 1px solid rgba(201, 168, 76, 0.15);
-      position: relative;
-      z-index: 10;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 5rem;
-      margin-bottom: 5rem;
-    }
-
-    .footer-brand .logo {
-      display: inline-block;
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-tagline {
-      font-family: var(--font-accent);
-      font-style: italic;
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: rgba(242, 235, 217, 0.6);
-      max-width: 320px;
-    }
-
-    .footer-title {
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--accent-gold);
-      margin-bottom: 1.8rem;
-    }
-
-    .footer-links {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .footer-link {
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      font-weight: 300;
-      color: rgba(242, 235, 217, 0.7);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .footer-link:hover {
-      color: var(--accent-gold);
-    }
-
-    .footer-contact-info {
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      font-weight: 300;
-      color: rgba(242, 235, 217, 0.7);
-      line-height: 1.8;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(242, 235, 217, 0.05);
-      padding-top: 2.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
-
-    .footer-copy {
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      color: rgba(242, 235, 217, 0.4);
-      font-weight: 300;
-    }
-
-    .footer-socials {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .social-icon {
-      color: rgba(242, 235, 217, 0.6);
-      text-decoration: none;
-      font-size: 1rem;
-      transition: color 0.3s;
-    }
-
-    .social-icon:hover {
-      color: var(--accent-gold);
-    }
-
-    @media (max-width: 768px) {
       .footer {
-        padding: 4rem 0 2.5rem 0;
+        padding: 4rem 2rem 2rem 2rem;
       }
-      .footer-grid {
+      .footer-top {
         grid-template-columns: 1fr;
         gap: 3rem;
-        margin-bottom: 3.5rem;
-      }
-      .footer-title {
-        margin-bottom: 1.2rem;
       }
       .footer-bottom {
         flex-direction: column;
-        align-items: center;
+        gap: 1.5rem;
         text-align: center;
       }
-    }
-
-
-
-
-
-    /* Sticky Action Dock */
-    .action-dock {
-      position: fixed;
-      right: 2rem;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      z-index: 998;
-    }
-
-    .dock-btn {
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      background-color: rgba(26, 20, 16, 0.9);
-      border: 1px solid rgba(201, 168, 76, 0.25);
-      color: var(--text-ivory);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .dock-btn:hover {
-      border-color: var(--accent-gold);
-      transform: scale(1.05);
-      box-shadow: 0 8px 25px rgba(201, 168, 76, 0.2);
-    }
-
-    .dock-btn.btn-gold {
-      background-color: var(--accent-gold);
-      border-color: var(--accent-gold);
-      color: var(--bg-espresso);
-    }
-
-    .dock-btn.btn-gold:hover {
-      background-color: transparent;
-      color: var(--accent-gold);
-    }
-
-    .dock-text {
-      display: none;
-    }
-
-    .dock-icon {
-      font-size: 1.25rem;
-    }
-
-    /* Mobile Layout for Action Dock (Sticky Bottom Bar) */
-    @media (max-width: 768px) {
-      body {
-        padding-bottom: 60px;
-      }
-      
-      .action-dock {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        top: auto;
-        transform: none;
-        flex-direction: row;
-        gap: 0;
-        width: 100%;
-        height: 60px;
-        background-color: rgba(13, 10, 7, 0.96);
-        border-top: 1px solid rgba(201, 168, 76, 0.2);
-        box-shadow: 0 -8px 25px rgba(0,0,0,0.5);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-      }
-      
-      .dock-btn {
-        flex: 1;
-        width: 100%;
-        height: 100%;
-        border-radius: 0;
-        border: none;
-        box-shadow: none;
-        display: flex;
-        flex-direction: row;
-        gap: 0.5rem;
-        background-color: transparent;
-      }
-      
-      .dock-btn:first-child {
-        border-right: 1px solid rgba(201, 168, 76, 0.15);
-      }
-      
-      .dock-btn.btn-gold {
-        background-color: var(--accent-gold);
-        color: var(--bg-espresso);
-      }
-      
-      .dock-btn.btn-gold:hover {
-        background-color: var(--accent-gold);
-        color: var(--bg-espresso);
-        transform: none;
-      }
-      
-      .dock-btn:hover {
-        transform: none;
-        box-shadow: none;
-      }
-      
-      .dock-text {
-        display: inline;
-        font-family: var(--font-body);
-        font-size: 0.8rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-      }
-    }
-
-    /* Prefers-reduced-motion fallback */
-    @media (prefers-reduced-motion: reduce) {
-      .aurora-blob {
-        animation: none !important;
-      }
-      .steam-line {
-        animation: none !important;
-        stroke-dashoffset: 0 !important;
-        opacity: 0.4 !important;
-      }
-      .marquee-track {
-        animation-duration: 60s !important;
-      }
-      .reveal {
-        transition: none !important;
-        opacity: 1 !important;
-        transform: none !important;
-      }
-      .menu-card {
-        transition: none !important;
-      }
-      .menu-card:hover {
-        transform: none !important;
-      }
-
     }
   </style>
 </head>
 <body>
 
-  <!-- Scroll Progress Bar -->
-  <div class="scroll-progress" id="scroll-progress"></div>
+  <!-- Top Scroll Progress -->
+  <div id="scroll-progress"></div>
 
-  <!-- 1. NAVBAR -->
-  <header>
-    <nav class="navbar" id="navbar">
-      <a href="#home" class="logo">VELVET<span class="logo-dot">•</span>BREW</a>
-      
-      <button class="hamburger" id="hamburger" aria-label="Toggle Navigation Menu">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
-      
-      <div class="nav-links" id="nav-links">
-        <a href="#home" class="nav-link active">HOME</a>
-        <a href="#menu" class="nav-link">MENU</a>
-        <a href="#story" class="nav-link">STORY</a>
-        <a href="#reserve" class="nav-link">RESERVE</a>
-      </div>
+  <!-- Navbar -->
+  <header class="navbar" id="navbar">
+    <a href="#" class="nav-logo">
+      <svg viewBox="0 0 24 24">
+        <!-- Elegant custom leaf path -->
+        <path d="M17.65,6.35C16.2,4.9 14.18,4 12,4A8,8 0 0,0 4,12C4,16.42 7.58,20 12,20C16.42,20 20,16.42 20,12C20,9.82 19.1,7.8 17.65,6.35M12,18C8.69,18 6,15.31 6,12C6,8.69 8.69,6 12,6C15.31,6 18,8.69 18,12C18,15.31 15.31,18 12,18M12,8C9.79,8 8,9.79 8,12C8,14.21 9.79,16 12,16C14.21,16 16,14.21 16,12C16,9.79 14.21,8 12,8M12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14Z" />
+      </svg>
+      TERRA & CO.
+    </a>
+    
+    <nav class="nav-menu">
+      <a href="#portfolio" class="nav-item">Work</a>
+      <a href="#services" class="nav-item">Services</a>
+      <a href="#about" class="nav-item">About</a>
+      <a href="#contact" class="nav-item">Contact</a>
     </nav>
+    
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+    
+    <!-- Mobile Hamburger Toggle -->
+    <div class="nav-toggle" id="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </header>
 
-  <!-- Sidebar Overlay -->
-  <div class="nav-overlay" id="nav-overlay"></div>
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-overlay" id="mobile-overlay">
+    <a href="#portfolio" class="nav-item mobile-link">Work</a>
+    <a href="#services" class="nav-item mobile-link">Services</a>
+    <a href="#about" class="nav-item mobile-link">About</a>
+    <a href="#contact" class="nav-item mobile-link">Contact</a>
+    <a href="#contact" class="nav-cta mobile-link" style="display:flex;">Get a Quote</a>
+  </div>
 
-  <main>
-    <!-- 2. HERO SECTION -->
-    <section class="hero" id="home">
-      <!-- Parallax Background Image -->
-      <div class="hero-image-bg" id="hero-bg-parallax"></div>
-
-      <!-- Animated Aurora Canvas/CSS blobs -->
-      <div class="hero-aurora-bg">
-        <div class="aurora-blob blob-1"></div>
-        <div class="aurora-blob blob-2"></div>
-        <div class="aurora-blob blob-3"></div>
+  <!-- Hero Section -->
+  <section class="hero-container">
+    <div class="hero-bg" id="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    
+    <div class="hero-content">
+      <span class="label-mono hero-pretitle">Bespoke Landscape Architecture</span>
+      <h1 class="hero-title">
+        We Shape the Land.
+        <em>You Inherit the Dream.</em>
+      </h1>
+      <p class="hero-subtitle">
+        Luxury landscaping & outdoor design — rooted in nature, curated with precision, built for lifetimes.
+      </p>
+      <div class="hero-ctas">
+        <a href="#portfolio" class="btn btn-solid">View Our Work</a>
+        <a href="#contact" class="btn btn-ghost">Free Consultation</a>
       </div>
-      
-      <!-- Steam Rising Overlay -->
-      <svg class="hero-steam" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <path d="M35,90 Q25,65 35,45 T35,5" fill="none" stroke="url(#steam-1)" stroke-width="1.2" class="steam-line line-1" />
-        <path d="M50,90 Q62,60 50,40 T50,5" fill="none" stroke="url(#steam-2)" stroke-width="1.2" class="steam-line line-2" />
-        <path d="M65,90 Q55,70 65,50 T65,5" fill="none" stroke="url(#steam-3)" stroke-width="1.2" class="steam-line line-3" />
-        <defs>
-          <linearGradient id="steam-1" x1="0%" y1="100%" x2="0%" y2="0%">
-            <stop offset="0%" stop-color="rgba(242, 235, 217, 0.4)" />
-            <stop offset="100%" stop-color="rgba(242, 235, 217, 0)" />
-          </linearGradient>
-          <linearGradient id="steam-2" x1="0%" y1="100%" x2="0%" y2="0%">
-            <stop offset="0%" stop-color="rgba(201, 168, 76, 0.45)" />
-            <stop offset="100%" stop-color="rgba(201, 168, 76, 0)" />
-          </linearGradient>
-          <linearGradient id="steam-3" x1="0%" y1="100%" x2="0%" y2="0%">
-            <stop offset="0%" stop-color="rgba(212, 133, 106, 0.4)" />
-            <stop offset="100%" stop-color="rgba(212, 133, 106, 0)" />
-          </linearGradient>
-        </defs>
+    </div>
+
+    <!-- Floating Leaf Particles -->
+    <div class="leaf-container">
+      <svg class="leaf-particle" viewBox="0 0 24 24">
+        <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C8.38,19.9 10.27,19.39 12,18C15.53,15.15 18,8 18,8C18,8 18,7.9 17,8M15.5,10.3C14.73,12.18 12.8,14.66 9.87,15.79C11.59,14.39 13,12.18 13.5,10.3C11.62,10.8 9.41,12.21 8,13.93C8.12,12 8.63,10.11 10,8.5C11.42,8.14 13.88,8.88 15.5,10.3Z"/>
       </svg>
+      <svg class="leaf-particle" viewBox="0 0 24 24">
+        <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C8.38,19.9 10.27,19.39 12,18C15.53,15.15 18,8 18,8C18,8 18,7.9 17,8M15.5,10.3C14.73,12.18 12.8,14.66 9.87,15.79C11.59,14.39 13,12.18 13.5,10.3C11.62,10.8 9.41,12.21 8,13.93C8.12,12 8.63,10.11 10,8.5C11.42,8.14 13.88,8.88 15.5,10.3Z"/>
+      </svg>
+      <svg class="leaf-particle" viewBox="0 0 24 24">
+        <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C8.38,19.9 10.27,19.39 12,18C15.53,15.15 18,8 18,8C18,8 18,7.9 17,8M15.5,10.3C14.73,12.18 12.8,14.66 9.87,15.79C11.59,14.39 13,12.18 13.5,10.3C11.62,10.8 9.41,12.21 8,13.93C8.12,12 8.63,10.11 10,8.5C11.42,8.14 13.88,8.88 15.5,10.3Z"/>
+      </svg>
+      <svg class="leaf-particle" viewBox="0 0 24 24">
+        <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C8.38,19.9 10.27,19.39 12,18C15.53,15.15 18,8 18,8C18,8 18,7.9 17,8M15.5,10.3C14.73,12.18 12.8,14.66 9.87,15.79C11.59,14.39 13,12.18 13.5,10.3C11.62,10.8 9.41,12.21 8,13.93C8.12,12 8.63,10.11 10,8.5C11.42,8.14 13.88,8.88 15.5,10.3Z"/>
+      </svg>
+      <svg class="leaf-particle" viewBox="0 0 24 24">
+        <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C8.38,19.9 10.27,19.39 12,18C15.53,15.15 18,8 18,8C18,8 18,7.9 17,8M15.5,10.3C14.73,12.18 12.8,14.66 9.87,15.79C11.59,14.39 13,12.18 13.5,10.3C11.62,10.8 9.41,12.21 8,13.93C8.12,12 8.63,10.11 10,8.5C11.42,8.14 13.88,8.88 15.5,10.3Z"/>
+      </svg>
+    </div>
 
-      <div class="hero-content">
-        <h1 class="hero-headline" id="hero-headline">Where Every Sip Tells a Story</h1>
-        <p class="hero-subtext">Single-origin. Hand-crafted. Unforgettable.</p>
-        <div class="hero-ctas">
-          <a href="#menu" class="btn btn-filled">Explore Menu</a>
-          <a href="#reserve" class="btn btn-outline">Reserve a Table</a>
-        </div>
+    <!-- Scroll Hint -->
+    <div class="scroll-hint">
+      <span>Explore</span>
+      <div class="scroll-hint-arrow"></div>
+    </div>
+  </section>
+
+  <!-- Marquee Strip -->
+  <div class="marquee-container">
+    <div class="marquee-content">
+      <!-- Repeated list to enable seamless infinite scroll -->
+      <span class="marquee-item"><span class="marquee-icon">🌿</span> Landscape Design</span>
+      <span class="marquee-item"><span class="marquee-icon">✦</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🪨</span> Hardscaping</span>
+      <span class="marquee-item"><span class="marquee-icon">✦</span></span>
+      <span class="marquee-item"><span class="marquee-icon">💧</span> Water Features</span>
+      <span class="marquee-item"><span class="marquee-icon">✦</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🌸</span> Garden Planting</span>
+      <span class="marquee-item"><span class="marquee-icon">✦</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🏡</span> Outdoor Living Spaces</span>
+      <span class="marquee-item"><span class="marquee-icon">✦</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🌳</span> Tree Surgery</span>
+      <span class="marquee-item"><span class="marquee-icon">✦</span></span>
+      <span class="marquee-item"><span class="marquee-icon">✨</span> Award-Winning Studio</span>
+      <span class="marquee-item"><span class="marquee-icon">✦</span></span>
+      
+      <!-- Duplicate list -->
+      <span class="marquee-item"><span class="marquee-icon">🌿</span> Landscape Design</span>
+      <span class="marquee-item"><span class="marquee-icon">✦</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🪨</span> Hardscaping</span>
+      <span class="marquee-item"><span class="marquee-icon">✦</span></span>
+      <span class="marquee-item"><span class="marquee-icon">💧</span> Water Features</span>
+      <span class="marquee-item"><span class="marquee-icon">✦</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🌸</span> Garden Planting</span>
+      <span class="marquee-item"><span class="marquee-icon">✦</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🏡</span> Outdoor Living Spaces</span>
+      <span class="marquee-item"><span class="marquee-icon">✦</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🌳</span> Tree Surgery</span>
+      <span class="marquee-item"><span class="marquee-icon">✦</span></span>
+      <span class="marquee-item"><span class="marquee-icon">✨</span> Award-Winning Studio</span>
+      <span class="marquee-item"><span class="marquee-icon">✦</span></span>
+    </div>
+  </div>
+
+  <!-- About / Story Section -->
+  <section class="about-section" id="about">
+    <div class="about-images-wrapper reveal">
+      <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1000&q=80" alt="Bespoke Luxury Estate Garden" class="about-img-main">
+      <img src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=600&q=80" alt="Hands in soil gardening details" class="about-img-accent">
+    </div>
+    
+    <div class="about-details reveal">
+      <span class="label-mono">01 / Our Story</span>
+      <h2 class="about-title">Cultivating Living Artistry</h2>
+      
+      <div class="about-body">
+        <p>
+          At TERRA & CO., we believe that the land is a canvas waiting for a master stroke. Founded as a sanctuary for premium outdoor architecture, we blend geometric structure with organic wilderness to construct gardens that tell a story of refinement.
+        </p>
+        <p>
+          We source the rarest stone, cultivate native specimens, and harness natural water pathways to build retreats that evolve beautifully over generations. Our team of architectural designers, horticultural experts, and precision engineers treat every property as a landmark work of living art.
+        </p>
       </div>
-    </section>
-
-    <!-- 3. MARQUEE STRIP -->
-    <div class="marquee-container">
-      <div class="marquee-track">
-        <div class="marquee-items">
-          <span class="marquee-item">☕ Specialty Coffee</span>
-          <span class="marquee-item">🫘 Single Origin Beans</span>
-          <span class="marquee-item">🌿 Organic Pastries</span>
-          <span class="marquee-item">🎵 Live Jazz Fridays</span>
-          <span class="marquee-item">✨ Est. 2019</span>
+      
+      <blockquote class="about-quote">
+        "A garden is not a space to be filled, but a living narrative of the home it surrounds."
+      </blockquote>
+      
+      <div class="about-stats">
+        <div class="stat-card">
+          <span class="stat-number">12+</span>
+          <span class="stat-label">National Design Awards</span>
         </div>
-        <div class="marquee-items">
-          <span class="marquee-item">☕ Specialty Coffee</span>
-          <span class="marquee-item">🫘 Single Origin Beans</span>
-          <span class="marquee-item">🌿 Organic Pastries</span>
-          <span class="marquee-item">🎵 Live Jazz Fridays</span>
-          <span class="marquee-item">✨ Est. 2019</span>
+        <div class="stat-card">
+          <span class="stat-number">250+</span>
+          <span class="stat-label">Estates Curated</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">20+</span>
+          <span class="stat-label">Years of Mastery</span>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- 4. ABOUT / STORY SECTION -->
-    <section class="story-section" id="story">
-      <div class="container">
-        <div class="story-container">
-          <div class="story-quote-wrapper reveal reveal-left">
-            <blockquote class="story-quote">
-              “Coffee isn't a drink. It's a ritual.”
-            </blockquote>
-          </div>
-          
-          <div class="story-divider"></div>
-          
-          <div class="story-text reveal reveal-up">
-            <p>At <span class="story-highlight">Velvet Brew</span>, we believe coffee is far more than a morning necessity; it is an intimate ceremony of reflection and presence. Each harvest is hand-selected from family-owned micro-lots, honoring the unique chemistry of volcanic soil, high altitudes, and meticulous shade-growing.</p>
-            <p>Step out of the city's relentless rhythm and into our sanctuary of slow living. Styled with dim, warm acoustics and hand-rubbed walnuts, we invite you to linger. Whether you are savoring a meticulous pour-over or listening to the soft pulse of Friday night jazz, we offer space to breathe, connect, and celebrate the fine art of the brew.</p>
-          </div>
-
-          <!-- Editorial Image Column (Asymmetrical reveal) -->
-          <div class="story-image-wrapper reveal reveal-right">
-            <div class="editorial-image-frame">
-              <img src="./espresso_pour.png" alt="Espresso crema pouring" class="parallax-image">
-              <div class="image-overlay-border"></div>
-            </div>
-          </div>
+  <!-- Services Section -->
+  <section class="services-section" id="services">
+    <div class="section-header reveal">
+      <div class="section-title-wrap">
+        <span class="label-mono">02 / What We Do</span>
+        <h2 class="section-title">The Art of Outdoor Living</h2>
+      </div>
+      <p class="section-desc">
+        A comprehensive design-build method ensuring seamless execution from raw concept to seasonal stewardship.
+      </p>
+    </div>
+    
+    <div class="services-grid">
+      <!-- Service 1 -->
+      <div class="service-card reveal">
+        <div class="service-card-top">
+          <span class="service-number">01 //</span>
+          <svg class="service-icon" viewBox="0 0 24 24">
+            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z"/>
+          </svg>
+        </div>
+        <div class="service-card-bottom">
+          <h3 class="service-title">Master Planning & Design</h3>
+          <p class="service-description">Bespoke blueprints, 3D architectural renders, and material boards mapping spatial flow and lighting profiles.</p>
+          <a href="#contact" class="service-link">Inquire</a>
         </div>
       </div>
-    </section>
-
-    <hr class="gold-divider">
-
-    <!-- 5. SIGNATURE MENU & TABS HUB -->
-    <section class="menu-section" id="menu">
-      <div class="container">
-        <h2 class="section-title">The Coffee Hub</h2>
-        <p class="section-subtitle">Exquisite Brews Crafted With Intention</p>
-        
-        <!-- Category Selector Tabs -->
-        <div class="menu-tabs reveal reveal-up">
-          <button class="tab-btn active" data-category="signature">Signature Brews</button>
-          <button class="tab-btn" data-category="slowbar">Slow Bar</button>
-          <button class="tab-btn" data-category="dolci">Artisanal Dolci</button>
+      
+      <!-- Service 2 -->
+      <div class="service-card reveal delay-1">
+        <div class="service-card-top">
+          <span class="service-number">02 //</span>
+          <svg class="service-icon" viewBox="0 0 24 24">
+            <path d="M19,3H5C3.89,3 3,3.9 3,5V19C3,20.1 3.89,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M19,5V11H13V5H19M11,5V11H5V5H11M5,13H11V19H5V13M13,19V13H19V19H13Z"/>
+          </svg>
         </div>
-
-        <div class="menu-grid">
-          <!-- CARD GROUP 1: SIGNATURE -->
-          <div class="menu-card reveal reveal-up" data-category="signature">
-            <div class="menu-card-image-wrapper">
-              <img src="./espresso_pour.png" alt="Velvet Espresso" class="menu-card-image">
-            </div>
-            <h3 class="menu-card-title">Velvet Espresso</h3>
-            <p class="menu-card-desc">A concentrated kiss of dark chocolate and stone fruit, crowned with a dense, tiger-striped crema.</p>
-            <span class="menu-card-price">$6.50</span>
-          </div>
-
-          <div class="menu-card reveal reveal-up" data-category="signature" style="transition-delay: 0.15s;">
-            <div class="menu-card-image-wrapper">
-              <img src="./cold_brew.png" alt="Rose Cold Brew" class="menu-card-image">
-            </div>
-            <h3 class="menu-card-title">Rose Cold Brew</h3>
-            <p class="menu-card-desc">Our slow-drip single origin infused with organic rosewater, served over a hand-carved ice sphere.</p>
-            <span class="menu-card-price">$8.00</span>
-          </div>
-
-          <div class="menu-card reveal reveal-up" data-category="signature" style="transition-delay: 0.3s;">
-            <div class="menu-card-image-wrapper">
-              <img src="./golden_latte.png" alt="Golden Turmeric Latte" class="menu-card-image">
-            </div>
-            <h3 class="menu-card-title">Golden Turmeric Latte</h3>
-            <p class="menu-card-desc">Raw honey and sun-kissed turmeric root, steamed with organic oat milk and cardamom dust.</p>
-            <span class="menu-card-price">$7.50</span>
-          </div>
-
-          <div class="menu-card reveal reveal-up" data-category="signature">
-            <div class="menu-card-image-wrapper">
-              <img src="./mocha_coffee.png" alt="Midnight Mocha" class="menu-card-image">
-            </div>
-            <h3 class="menu-card-title">Midnight Mocha</h3>
-            <p class="menu-card-desc">Artisanal Ecuadorian dark chocolate blended with espresso and a touch of black sea salt.</p>
-            <span class="menu-card-price">$8.50</span>
-          </div>
-
-          <div class="menu-card reveal reveal-up" data-category="signature" style="transition-delay: 0.15s;">
-            <div class="menu-card-image-wrapper">
-              <img src="./cortado_coffee.png" alt="Fig & Honey Cortado" class="menu-card-image">
-            </div>
-            <h3 class="menu-card-title">Fig & Honey Cortado</h3>
-            <p class="menu-card-desc">Equal parts espresso and warm milk, sweetened with double-filtered wildflower honey and fig extract.</p>
-            <span class="menu-card-price">$7.00</span>
-          </div>
-
-          <div class="menu-card reveal reveal-up" data-category="signature" style="transition-delay: 0.3s;">
-            <div class="menu-card-image-wrapper">
-              <img src="./flat_white.png" alt="Smoked Vanilla Flat White" class="menu-card-image">
-            </div>
-            <h3 class="menu-card-title">Smoked Vanilla Flat</h3>
-            <p class="menu-card-desc">Espresso sweetened with house-smoked Madagascar vanilla bean syrup, with velvet microfoam.</p>
-            <span class="menu-card-price">$8.00</span>
-          </div>
-
-          <!-- CARD GROUP 2: SLOW BAR -->
-          <div class="menu-card reveal reveal-up" data-category="slowbar" style="display: none;">
-            <div class="menu-card-image-wrapper">
-              <img src="./brew_ritual.png" alt="Panama Geisha" class="menu-card-image">
-            </div>
-            <h3 class="menu-card-title">Panama Geisha</h3>
-            <p class="menu-card-desc">Exclusive Panama Geisha lot with tasting notes of jasmine, white peach, and orange blossom.</p>
-            <span class="menu-card-price">$12.00</span>
-          </div>
-
-          <div class="menu-card reveal reveal-up" data-category="slowbar" style="display: none; transition-delay: 0.15s;">
-            <div class="menu-card-image-wrapper">
-              <img src="./syphon_coffee.png" alt="Yemen Haraz" class="menu-card-image">
-            </div>
-            <h3 class="menu-card-title">Yemen Haraz</h3>
-            <p class="menu-card-desc">Rare volcanic soil micro-lot with complex dark cherry, cardamom, and clove undertones.</p>
-            <span class="menu-card-price">$10.50</span>
-          </div>
-
-          <div class="menu-card reveal reveal-up" data-category="slowbar" style="display: none; transition-delay: 0.3s;">
-            <div class="menu-card-image-wrapper">
-              <img src="./chemex_coffee.png" alt="Bourbon Sidra" class="menu-card-image">
-            </div>
-            <h3 class="menu-card-title">Bourbon Sidra</h3>
-            <p class="menu-card-desc">Double anaerobic fermentation yielding a wild bouquet of mango, grape, and floral honey.</p>
-            <span class="menu-card-price">$11.00</span>
-          </div>
-
-          <!-- CARD GROUP 3: DOLCI -->
-          <div class="menu-card reveal reveal-up" data-category="dolci" style="display: none;">
-            <div class="menu-card-image-wrapper">
-              <img src="./pastry_craft.png" alt="Velvet Croissant" class="menu-card-image">
-            </div>
-            <h3 class="menu-card-title">Velvet Croissant</h3>
-            <p class="menu-card-desc">Sourdough croissant laminated with Normandy butter, baked to crisp shell, dusted with gold flake.</p>
-            <span class="menu-card-price">$7.50</span>
-          </div>
-
-          <div class="menu-card reveal reveal-up" data-category="dolci" style="display: none; transition-delay: 0.15s;">
-            <div class="menu-card-image-wrapper">
-              <img src="./macarons.png" alt="Rosewater Macarons" class="menu-card-image">
-            </div>
-            <h3 class="menu-card-title">Rosewater Macarons</h3>
-            <p class="menu-card-desc">Delicate almond flour sandwiches filled with fresh raspberry jam and organic rose absolute.</p>
-            <span class="menu-card-price">$8.50</span>
-          </div>
-
-          <div class="menu-card reveal reveal-up" data-category="dolci" style="display: none; transition-delay: 0.3s;">
-            <div class="menu-card-image-wrapper">
-              <img src="./espresso_tart.png" alt="Espresso Dark Tart" class="menu-card-image">
-            </div>
-            <h3 class="menu-card-title">Espresso Dark Tart</h3>
-            <p class="menu-card-desc">A velvet custard of Ecuadorian cacao infused with our house espresso, nestled in cocoa crust.</p>
-            <span class="menu-card-price">$9.00</span>
-          </div>
+        <div class="service-card-bottom">
+          <h3 class="service-title">Bespoke Hardscaping</h3>
+          <p class="service-description">Precision masonry, customized stone terraces, dynamic water walls, pergolas, and outdoor kitchens built to last.</p>
+          <a href="#contact" class="service-link">Inquire</a>
         </div>
       </div>
-    </section>
-
-    <!-- Sidebar Customizer Panel (Right slide-out) -->
-    <div class="sidebar-panel" id="customizer-panel">
-      <button class="sidebar-close" id="sidebar-close" aria-label="Close customizer">&times;</button>
-      <div class="sidebar-content">
-        <!-- Replaced Emoji with a beautiful framed image of the selected coffee -->
-        <div class="sidebar-item-image-wrapper">
-          <img src="" alt="" id="panel-image" class="sidebar-item-image">
+      
+      <!-- Service 3 -->
+      <div class="service-card reveal delay-2">
+        <div class="service-card-top">
+          <span class="service-number">03 //</span>
+          <svg class="service-icon" viewBox="0 0 24 24">
+            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4C13.9,4 15.7,4.8 17,6.1L12,11.1L7,6.1C8.3,4.8 10.1,4 12,4M4,12C4,10.1 4.8,8.3 6.1,7L11.1,12L6.1,17C4.8,15.7 4,13.9 4,12M12,20C10.1,20 8.3,19.2 7,17.9L12,12.9L17,17.9C15.7,19.2 13.9,20 12,20M20,12C20,13.9 19.2,15.7 17.9,17L12.9,12L17.9,7C19.2,8.3 20,10.1 20,12Z"/>
+          </svg>
         </div>
-        <h3 class="sidebar-item-name" id="panel-name">Velvet Espresso</h3>
-        <p class="sidebar-item-desc" id="panel-desc">A concentrated kiss of dark chocolate and stone fruit, crowned with a dense, tiger-striped crema.</p>
-        
-        <hr class="sidebar-divider">
-        
-        <!-- Customization Options -->
-        <div class="option-group">
-          <h4 class="option-title">Milk Selection</h4>
-          <div class="option-selectors" id="milk-select">
-            <button class="option-btn active" data-value="Whole Milk">Whole Milk</button>
-            <button class="option-btn" data-value="Oat Milk">Oat Milk</button>
-            <button class="option-btn" data-value="Almond Milk">Almond Milk</button>
-            <button class="option-btn" data-value="Macadamia Milk">Macadamia</button>
-          </div>
+        <div class="service-card-bottom">
+          <h3 class="service-title">Water & Light Artistry</h3>
+          <p class="service-description">Dynamic water fountains, biological swimming pools, and architectural lighting layouts that elevate nocturnal views.</p>
+          <a href="#contact" class="service-link">Inquire</a>
         </div>
-        
-        <div class="option-group">
-          <h4 class="option-title">Sweetness Level</h4>
-          <div class="option-selectors" id="sweetness-select">
-            <button class="option-btn" data-value="Unsweetened">None</button>
-            <button class="option-btn" data-value="Light Sweetness">Light</button>
-            <button class="option-btn active" data-value="Medium Sweetness">Medium</button>
-            <button class="option-btn" data-value="Sweet">Full</button>
-          </div>
+      </div>
+      
+      <!-- Service 4 -->
+      <div class="service-card reveal delay-3">
+        <div class="service-card-top">
+          <span class="service-number">04 //</span>
+          <svg class="service-icon" viewBox="0 0 24 24">
+            <path d="M12,3A9,9 0 0,0 3,12A9,9 0 0,0 12,21A9,9 0 0,0 21,12A9,9 0 0,0 12,3M12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z"/>
+          </svg>
         </div>
-
-        <div class="option-group">
-          <h4 class="option-title">Extra Shots</h4>
-          <div class="option-selectors" id="shots-select">
-            <button class="option-btn active" data-value="Double Shot">Double (Std)</button>
-            <button class="option-btn" data-value="Triple Shot">+1 Shot</button>
-            <button class="option-btn" data-value="Quad Shot">+2 Shots</button>
-          </div>
+        <div class="service-card-bottom">
+          <h3 class="service-title">Estate Curation</h3>
+          <p class="service-description">Premium horticultural programs, seasonal planting, soil curation, and routine technical maintenance of custom outdoor elements.</p>
+          <a href="#contact" class="service-link">Inquire</a>
         </div>
-        
-        <!-- Dynamic Ticket -->
-        <div class="ticket-container">
-          <div class="ticket-header">
-            <span>VELVET BREW RITUAL TICKET</span>
-            <span id="ticket-number">#3920</span>
-          </div>
-          <div class="ticket-body">
-            <div class="ticket-row"><span>Item</span><span id="ticket-item">Velvet Espresso</span></div>
-            <div class="ticket-row"><span>Milk</span><span id="ticket-milk">Whole Milk</span></div>
-            <div class="ticket-row"><span>Sweetness</span><span id="ticket-sweetness">Medium Sweetness</span></div>
-            <div class="ticket-row"><span>Strength</span><span id="ticket-shots">Double Shot</span></div>
-            <hr class="ticket-dash">
-            <div class="ticket-row ticket-total"><span>Total</span><span id="ticket-price">$6.50</span></div>
-          </div>
-          <div class="ticket-barcode">||||| | || |||| | ||| | ||</div>
-        </div>
-        
-        <button class="btn btn-filled sidebar-action-btn" onclick="alert('Your custom brew selection has been transmitted to our baristas.')">Add to Order</button>
       </div>
     </div>
+  </section>
 
-    <!-- Editorial Slow Bar Detail Section -->
-    <section class="slowbar-section reveal reveal-up">
-      <div class="container">
-        <div class="slowbar-layout">
-          <div class="slowbar-content">
-            <span class="slowbar-tag">THE POUR OVER CLINIC</span>
-            <h3 class="slowbar-title">The Slow Bar</h3>
-            <p class="slowbar-desc">Experience coffee in its purest, most delicate state. Our slow bar pour-overs are brewed by hand at exactly 202°F using custom filtered soft water, slowly unlocking the bright florals and complex sweetness of rare origin coffees.</p>
-            <a href="#menu" class="btn btn-outline" style="margin-top: 1.5rem;">Explore Single Origins</a>
+  <!-- Portfolio Section -->
+  <section class="portfolio-section" id="portfolio">
+    <div class="portfolio-filter-wrap reveal">
+      <div>
+        <span class="label-mono">03 / Selected Works</span>
+        <h2 class="section-title">Our Landscaped Masterpieces</h2>
+      </div>
+      
+      <div class="portfolio-filters">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="estates">Estates</button>
+        <button class="filter-btn" data-filter="gardens">Gardens</button>
+        <button class="filter-btn" data-filter="oasis">Oases</button>
+      </div>
+    </div>
+    
+    <div class="portfolio-grid">
+      <!-- Item 1 -->
+      <div class="portfolio-item reveal" data-category="estates">
+        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80" alt="The Aspen Ridge Estate Landscape" class="portfolio-item-img">
+        <div class="portfolio-item-overlay">
+          <div class="portfolio-meta">
+            <span class="label-mono" style="color: var(--gold-detail);">Aspen, CO</span>
+            <span class="label-mono" style="opacity: 0.5;">•</span>
+            <span class="label-mono">Estate</span>
           </div>
-          <div class="slowbar-image-frame">
-            <img src="./brew_ritual.png" alt="Slow Bar Pour Over Ritual" class="parallax-image">
-            <div class="frame-label">CHEMISTRY ROOM — 202°F</div>
-          </div>
+          <h3 class="portfolio-item-title">The Aspen Ridge Estate</h3>
+          <p class="portfolio-item-subtitle">A multi-layered Alpine meadow featuring natural flagstone paths and native mountain spruce.</p>
         </div>
       </div>
-    </section>
-
-    <!-- Editorial Pastry Detail Section -->
-    <section class="pastry-section reveal reveal-up">
-      <div class="container">
-        <div class="pastry-layout">
-          <div class="pastry-image-frame">
-            <img src="./pastry_craft.png" alt="Artisanal baked croissants" class="parallax-image">
-            <div class="frame-label">BAKED FRESH — 5:30 AM</div>
+      
+      <!-- Item 2 -->
+      <div class="portfolio-item reveal" data-category="gardens">
+        <img src="https://images.unsplash.com/photo-1508873696983-2df519f0397e?w=800&q=80" alt="Kyoto Minimalist Garden Path" class="portfolio-item-img">
+        <div class="portfolio-item-overlay">
+          <div class="portfolio-meta">
+            <span class="label-mono" style="color: var(--gold-detail);">Portland, OR</span>
+            <span class="label-mono" style="opacity: 0.5;">•</span>
+            <span class="label-mono">Garden</span>
           </div>
-          <div class="pastry-content">
-            <span class="pastry-tag">DAILY PATISSERIE</span>
-            <h3 class="pastry-title">Bespoke Pastries</h3>
-            <p class="pastry-desc">Handcrafted in our micro-bakery at dawn. We rise early to laminate double-churned Normandy butter into organic stone-ground flours. From gold-dusted croissants to subtle lavender honey scones, each pastry is engineered to pair perfectly with our espresso profiles.</p>
-            <a href="#menu" class="btn btn-outline" style="margin-top: 1.5rem;">Browse Dolci</a>
-          </div>
+          <h3 class="portfolio-item-title">Kyoto Minimalist Path</h3>
+          <p class="portfolio-item-subtitle">Tranquil walking path utilizing clean moss bases, precision steps, and customized water basins.</p>
         </div>
       </div>
-    </section>
+      
+      <!-- Item 3 -->
+      <div class="portfolio-item reveal" data-category="oasis">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Malibu Coastal Patio and Pool" class="portfolio-item-img">
+        <div class="portfolio-item-overlay">
+          <div class="portfolio-meta">
+            <span class="label-mono" style="color: var(--gold-detail);">Malibu, CA</span>
+            <span class="label-mono" style="opacity: 0.5;">•</span>
+            <span class="label-mono">Oasis</span>
+          </div>
+          <h3 class="portfolio-item-title">Malibu Coastal Terrace</h3>
+          <p class="portfolio-item-subtitle">Infinity terrace design featuring geometric limestone framing, native grasses, and a warm fire lounge.</p>
+        </div>
+      </div>
+      
+      <!-- Item 4 -->
+      <div class="portfolio-item reveal" data-category="estates">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80" alt="The Berkshire Countryside Retreat Garden" class="portfolio-item-img">
+        <div class="portfolio-item-overlay">
+          <div class="portfolio-meta">
+            <span class="label-mono" style="color: var(--gold-detail);">Lennox, MA</span>
+            <span class="label-mono" style="opacity: 0.5;">•</span>
+            <span class="label-mono">Estate</span>
+          </div>
+          <h3 class="portfolio-item-title">The Berkshire Retreat</h3>
+          <p class="portfolio-item-subtitle">Classic English-inspired estate gardens lined with lavender hedges, boxwood frames, and cobblestones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <hr class="gold-divider">
-
-    <!-- 6. EXPERIENCE SECTION -->
-    <section class="experience-section">
-      <div class="container">
-        <h2 class="section-title">The Velvet Ritual</h2>
-        <p class="section-subtitle">Pillars of Our Sanctuary</p>
+  <!-- Philosophy & Process Section -->
+  <section class="process-section" id="process">
+    <div class="process-container">
+      <div class="process-sidebar">
+        <span class="label-mono">04 / Our Process</span>
+        <h2 class="section-title" style="margin-top: 1rem; margin-bottom: 3rem;">How We Create</h2>
         
-        <div class="experience-grid">
-          <!-- Pillar 1 -->
-          <div class="experience-pillar align-left reveal reveal-left">
-            <span class="experience-num">01</span>
-            <h3 class="experience-pillar-title">🎶 Live Jazz Evenings</h3>
-            <p class="experience-desc">Let the sultry notes of acoustic bass and brass wrap around your evening. Every Friday night, local virtuosos turn our space into a cozy jazz cellar.</p>
+        <div class="process-steps-list">
+          <div class="process-step-tab active" data-step="1">
+            <span class="process-step-num">01 /</span>
+            <span class="process-step-name">Site & Vision</span>
           </div>
-
-          <!-- Pillar 2 -->
-          <div class="experience-pillar align-center reveal reveal-up">
-            <span class="experience-num">02</span>
-            <h3 class="experience-pillar-title">🕯️ Ambient Interiors</h3>
-            <p class="experience-desc">A sanctuary of dim lights, warm textures, and natural timber. Designed as an escape from the city's frantic pace, where shadows dance and thoughts settle.</p>
+          <div class="process-step-tab" data-step="2">
+            <span class="process-step-num">02 /</span>
+            <span class="process-step-name">Flora & Material Curation</span>
           </div>
-
-          <!-- Pillar 3 -->
-          <div class="experience-pillar align-right reveal reveal-right">
-            <span class="experience-num">03</span>
-            <h3 class="experience-pillar-title">🫖 Curated Brew Sessions</h3>
-            <p class="experience-desc">Embark on a sensory journey guided by our master baristas. Private micro-lot tastings exploring origin profiles, fermentation techniques, and roast chemistry.</p>
+          <div class="process-step-tab" data-step="3">
+            <span class="process-step-num">03 /</span>
+            <span class="process-step-name">Precision Construction</span>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 7. TESTIMONIALS CAROUSEL -->
-    <section class="testimonials-section">
-      <div class="container">
-        <div class="carousel-container reveal reveal-up">
-          <div class="carousel-track" id="carousel-track">
-            <!-- Testimonial 1 -->
-            <div class="testimonial-card">
-              <span class="quote-mark">“</span>
-              <p class="testimonial-text">The Fig & Honey Cortado is a revelation. Velvet Brew has managed to turn a morning coffee run into a sacred meditative experience. The atmosphere is unmatched.</p>
-              <span class="testimonial-author">EVELYN VANCE</span>
-            </div>
-            
-            <!-- Testimonial 2 -->
-            <div class="testimonial-card">
-              <span class="quote-mark">“</span>
-              <p class="testimonial-text">An absolute masterpiece of sensory delight. From the custom glassware to the low-lit jazz ambience, this café sets a new standard for luxury hospitality.</p>
-              <span class="testimonial-author">JULIAN BLACKWOOD</span>
-            </div>
-            
-            <!-- Testimonial 3 -->
-            <div class="testimonial-card">
-              <span class="quote-mark">“</span>
-              <p class="testimonial-text">It feels like stepping into a hidden Parisian salon. The single-origin pour overs are treated with the reverence of fine wine. An absolute must-visit.</p>
-              <span class="testimonial-author">CLARA MONTAGUE</span>
-            </div>
+          <div class="process-step-tab" data-step="4">
+            <span class="process-step-num">04 /</span>
+            <span class="process-step-name">Hand-Planting</span>
           </div>
-          
-          <div class="carousel-indicators">
-            <span class="indicator active" data-index="0"></span>
-            <span class="indicator" data-index="1"></span>
-            <span class="indicator" data-index="2"></span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 8. RESERVATION CTA & TIME-SLOT PLANNER SECTION -->
-    <section class="reservation-section" id="reserve">
-      <div class="container">
-        <div class="reveal reveal-up">
-          <h2 class="reserve-headline">Come In. Slow Down.<br>Stay Awhile.</h2>
-        </div>
-
-        <!-- Interactive Scheduler Planner -->
-        <div class="booking-widget reveal reveal-up">
-          <!-- Step 1: Form Selection -->
-          <div class="booking-step active" id="step-1">
-            <h3 class="booking-widget-title">Select Lounge Availability</h3>
-            
-            <!-- Date Selection -->
-            <div class="booking-group">
-              <label class="booking-label">Date Selection</label>
-              <div class="date-selector">
-                <button class="booking-select-btn active" data-date="Today">Today</button>
-                <button class="booking-select-btn" data-date="Tomorrow">Tomorrow</button>
-                <button class="booking-select-btn" data-date="Friday, June 26">Friday, Jun 26</button>
-                <button class="booking-select-btn" data-date="Saturday, June 27">Saturday, Jun 27</button>
-              </div>
-            </div>
-            
-            <!-- Time Selection -->
-            <div class="booking-group">
-              <label class="booking-label">Available Time Slots</label>
-              <div class="time-selector">
-                <button class="booking-select-btn active" data-time="9:00 AM">9:00 AM</button>
-                <button class="booking-select-btn" data-time="11:30 AM">11:30 AM</button>
-                <button class="booking-select-btn" data-time="2:00 PM">2:00 PM</button>
-                <button class="booking-select-btn" data-time="5:30 PM">5:30 PM (Jazz Set)</button>
-                <button class="booking-select-btn" data-time="8:00 PM">8:00 PM (Jazz Set)</button>
-              </div>
-            </div>
-
-            <!-- Party Selection -->
-            <div class="booking-group">
-              <label class="booking-label">Party Size</label>
-              <div class="party-selector">
-                <button class="booking-select-btn active" data-party="2 Guests">2 Guests</button>
-                <button class="booking-select-btn" data-party="4 Guests">4 Guests</button>
-                <button class="booking-select-btn" data-party="6 Guests">6 Guests</button>
-                <button class="booking-select-btn" data-party="Private Lounge (8+)">Private (8+)</button>
-              </div>
-            </div>
-
-            <button class="btn btn-filled booking-action-btn" id="btn-next-step">Confirm Availability</button>
-          </div>
-          
-          <!-- Step 2: Confirmation Ticket -->
-          <div class="booking-step" id="step-2">
-            <div class="ticket-container success-ticket">
-              <div class="ticket-header">
-                <span>RITUAL CONFIRMED</span>
-                <span id="res-id">#VB-4921</span>
-              </div>
-              <div class="ticket-body">
-                <div class="success-message">YOUR TABLE IS SECURED. SLOW DOWN AND LINGER.</div>
-                <hr class="ticket-dash">
-                <div class="ticket-row"><span>Date</span><span id="res-date">Today</span></div>
-                <div class="ticket-row"><span>Time</span><span id="res-time">9:00 AM</span></div>
-                <div class="ticket-row"><span>Party Size</span><span id="res-party">2 Guests</span></div>
-                <div class="ticket-row"><span>Lounge Spot</span><span>Sanctuary Room</span></div>
-                <hr class="ticket-dash">
-                <div class="ticket-row ticket-total"><span>Cover Charge</span><span>Complimentary</span></div>
-              </div>
-              <div class="ticket-barcode">||||| | || |||| | ||| | ||</div>
-            </div>
-            <button class="btn btn-outline booking-action-btn" id="btn-reset-booking">Book Another Table</button>
-          </div>
-        </div>
-        
-        <div class="reservation-details reveal reveal-up" style="transition-delay: 0.2s;">
-          <div class="detail-item">
-            <span class="detail-icon">📍</span>
-            <span>184 Bleecker Street, New York, NY</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-icon">⏱️</span>
-            <span>Mon–Sun: 7am–8pm</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-icon">📞</span>
-            <span>(212) 555-0190</span>
-          </div>
-        </div>
-
-        <!-- Google Map Directions -->
-        <div class="map-container reveal reveal-up" style="transition-delay: 0.3s;">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.2755252874134!2d-74.00405102434057!3d40.73060877139151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25992b8d0b5fb%3A0x6e9f6c7c25e839e5!2s184%20Bleecker%20St%2C%20New%20York%2C%20NY%2010012!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
-            width="100%" 
-            height="320" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-          <div class="map-overlay">
-            <a href="https://maps.google.com/?q=184+Bleecker+St,+New+York,+NY+10012" target="_blank" class="btn btn-outline map-directions-btn">
-              <span>GET DIRECTIONS</span>
-              <span style="font-size: 0.8rem; margin-left: 0.3rem;">↗</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-
-
-  <!-- 9. FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="#home" class="logo">VELVET<span class="logo-dot">•</span>BREW</a>
-          <p class="footer-tagline">Crafting sensory narratives through single-origin chemistry and low-lit jazz ambience.</p>
-        </div>
-        
-        <div>
-          <h4 class="footer-title">Navigation</h4>
-          <ul class="footer-links">
-            <li><a href="#home" class="footer-link">Home</a></li>
-            <li><a href="#menu" class="footer-link">Menu</a></li>
-            <li><a href="#story" class="footer-link">Our Story</a></li>
-            <li><a href="#reserve" class="footer-link">Reservations</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h4 class="footer-title">Contact</h4>
-          <div class="footer-contact-info">
-            <p>hello@velvetbrew.com</p>
-            <p>+1 (212) 555-0190</p>
-            <p>184 Bleecker Street,<br>New York, NY 10012</p>
+          <div class="process-step-tab" data-step="5">
+            <span class="process-step-num">05 /</span>
+            <span class="process-step-name">Lifetime Stewardship</span>
           </div>
         </div>
       </div>
       
-      <div class="footer-bottom">
-        <p class="footer-copy">© 2025 Velvet Brew. Crafted with care.</p>
-        <div class="footer-socials">
-          <a href="#" class="social-icon" aria-label="Instagram">IG</a>
-          <a href="#" class="social-icon" aria-label="Facebook">FB</a>
-          <a href="#" class="social-icon" aria-label="Twitter">TW</a>
+      <div class="process-content-panel">
+        <!-- Step 1 Details -->
+        <div class="process-detail-item active" id="step-desc-1">
+          <span class="process-detail-num">// Phase I //</span>
+          <h3 class="process-detail-title">Architectural Vision & Site Analysis</h3>
+          <p class="process-detail-desc">
+            We spend hours surveying the topography, assessing the natural solar path, analyzing local soil biochemistry, and understanding the existing architecture of the home. This initial deep dive yields a custom spatial design that respects the ecology of the site.
+          </p>
+          <div class="process-detail-features">
+            <div class="feature-item">
+              <span class="feature-title">Topographic Mapping</span>
+              <span class="feature-desc">Accurate 3D terrain analysis using advanced coordinate measurements.</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-title">Solar & wind profiling</span>
+              <span class="feature-desc">Tracking local micro-climate factors to place vegetation for optimal longevity.</span>
+            </div>
+          </div>
         </div>
+        
+        <!-- Step 2 Details -->
+        <div class="process-detail-item" id="step-desc-2">
+          <span class="process-detail-num">// Phase II //</span>
+          <h3 class="process-detail-title">Flora Curation & Raw Material Selection</h3>
+          <p class="process-detail-desc">
+            We source natural materials with deep textures and unique characteristics. Our horticultural team personally hand-selects every tree, shrub, and specimen from premium specialized nurseries to ensure structural perfection and immediate aesthetic synergy.
+          </p>
+          <div class="process-detail-features">
+            <div class="feature-item">
+              <span class="feature-title">Bespoke Nursery Sourcing</span>
+              <span class="feature-desc">Personally picking healthy specimens with unique sculptural habits.</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-title">Rare Stone Sourcing</span>
+              <span class="feature-desc">Limestone, granite, and slate hand-selected for exact geological textures.</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Step 3 Details -->
+        <div class="process-detail-item" id="step-desc-3">
+          <span class="process-detail-num">// Phase III //</span>
+          <h3 class="process-detail-title">Precision Groundwork & Construction</h3>
+          <p class="process-detail-desc">
+            Our construction experts utilize civil engineering practices to build robust foundations, specialized drainage layouts, custom masonry structures, and water elements. We shape the soil layers to ensure high structural integrity.
+          </p>
+          <div class="process-detail-features">
+            <div class="feature-item">
+              <span class="feature-title">Civil Grade Grading</span>
+              <span class="feature-desc">Sculpting hillsides, establishing levels, and creating reliable grading.</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-title">Technical Stonework</span>
+              <span class="feature-desc">Dry-stack stone walls and masonry terraces built with enduring detail.</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Step 4 Details -->
+        <div class="process-detail-item" id="step-desc-4">
+          <span class="process-detail-num">// Phase IV //</span>
+          <h3 class="process-detail-title">Bespoke Hand-Planting & Horticultural Styling</h3>
+          <p class="process-detail-desc">
+            Horticulture meets fine art as our landscape stylists arrange and plant every specimen manually. We pay close attention to depth, custom compost blends, root system placement, and visual layering to produce a lush environment right from day one.
+          </p>
+          <div class="process-detail-features">
+            <div class="feature-item">
+              <span class="feature-title">Organic Enrichment</span>
+              <span class="feature-desc">Specially formulated organic mixtures to feed specific plant types.</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-title">Compositional Layering</span>
+              <span class="feature-desc">Combining shades, leaf textures, and heights to create visual depth.</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Step 5 Details -->
+        <div class="process-detail-item" id="step-desc-5">
+          <span class="process-detail-num">// Phase V //</span>
+          <h3 class="process-detail-title">Lifetime Stewardship & Horticultural Care</h3>
+          <p class="process-detail-desc">
+            A luxury garden is a living system that develops and moves through time. We provide ongoing, highly specialized care programs to protect the architectural intent of the landscape, pruning with precision and nurturing the soil.
+          </p>
+          <div class="process-detail-features">
+            <div class="feature-item">
+              <span class="feature-title">Precision Hand-Pruning</span>
+              <span class="feature-desc">Supporting healthy structure while maintaining silhouette lines.</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-title">Nutritional Programs</span>
+              <span class="feature-desc">Seasonal soil diagnostics and tailored feeding cycles for all plant life.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inquiry Section -->
+  <section class="contact-section" id="contact">
+    <div class="contact-info">
+      <div class="contact-heading-wrap">
+        <span class="label-mono">05 / Start Your Journey</span>
+        <h2 class="contact-title">Begin Your Estate Transformation</h2>
+      </div>
+      
+      <div class="contact-coordinates">
+        <div class="coordinate-item">
+          <span class="coordinate-label">The Studio</span>
+          <span class="coordinate-value">8480 Melrose Avenue<br>West Hollywood, CA 90069</span>
+        </div>
+        <div class="coordinate-item">
+          <span class="coordinate-label">Direct Lines</span>
+          <span class="coordinate-value">
+            <a href="tel:13105550190">310.555.0190</a><br>
+            <a href="mailto:curator@terraandco.com">curator@terraandco.com</a>
+          </span>
+        </div>
+        <div class="coordinate-item">
+          <span class="coordinate-label">Digital Presence</span>
+          <span class="coordinate-value" style="font-size: 1.2rem; font-family: var(--font-body); letter-spacing: 0.1em;">
+            INSTAGRAM // PINTEREST // JOURNAL
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="inquiry-form-card">
+      <!-- Success Screen -->
+      <div class="form-success-overlay" id="form-success">
+        <svg class="success-icon" viewBox="0 0 24 24">
+          <path d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z"/>
+        </svg>
+        <h3 class="success-title">Invitation Received</h3>
+        <p class="success-text">
+          Thank you for reaching out. We review each estate request with care. A private designer will contact you within 24 hours.
+        </p>
+      </div>
+
+      <form id="inquiry-form">
+        <div class="form-group">
+          <input type="text" id="form-name" class="form-input" placeholder=" " required autocomplete="name">
+          <label for="form-name" class="form-label">Full Name</label>
+        </div>
+        
+        <div class="form-group">
+          <input type="email" id="form-email" class="form-input" placeholder=" " required autocomplete="email">
+          <label for="form-email" class="form-label">Email Address</label>
+        </div>
+        
+        <div class="form-group">
+          <select id="form-project-type" class="form-input" required>
+            <option value="" disabled selected hidden></option>
+            <option value="estate-design">Full Estate Design & Build</option>
+            <option value="garden-reimagining">Garden Reimagining</option>
+            <option value="hardscape-pool">Terrace, Hardscape & Pool</option>
+            <option value="ongoing-stewardship">Estate Stewardship & Care</option>
+          </select>
+          <label for="form-project-type" class="form-label">Project Type</label>
+          <div class="select-arrow"></div>
+        </div>
+        
+        <div class="form-group">
+          <select id="form-budget" class="form-input" required>
+            <option value="" disabled selected hidden></option>
+            <option value="50k-100k">$50,000 – $100,000</option>
+            <option value="100k-250k">$100,000 – $250,000</option>
+            <option value="250k-500k">$250,000 – $500,000</option>
+            <option value="500k+">$500,000+ (Custom Estate)</option>
+          </select>
+          <label for="form-budget" class="form-label">Estimated Investment</label>
+          <div class="select-arrow"></div>
+        </div>
+        
+        <div class="form-group" style="margin-bottom: 3.5rem;">
+          <textarea id="form-message" class="form-input" placeholder=" " rows="3" required style="resize: none;"></textarea>
+          <label for="form-message" class="form-label">Tell us about your estate & outdoor aspirations...</label>
+        </div>
+        
+        <button type="submit" class="btn-submit">Request Design Invitation</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="footer-logo">
+          <svg viewBox="0 0 24 24">
+            <path d="M17.65,6.35C16.2,4.9 14.18,4 12,4A8,8 0 0,0 4,12C4,16.42 7.58,20 12,20C16.42,20 20,16.42 20,12C20,9.82 19.1,7.8 17.65,6.35M12,18C8.69,18 6,15.31 6,12C6,8.69 8.69,6 12,6C15.31,6 18,8.69 18,12C18,15.31 15.31,18 12,18M12,8C9.79,8 8,9.79 8,12C8,14.21 9.79,16 12,16C14.21,16 16,14.21 16,12C16,9.79 14.21,8 12,8M12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14Z" />
+          </svg>
+          TERRA & CO.
+        </a>
+        <p class="footer-tagline">
+          Luxury outdoor architecture and horticultural craftsmanship. Elevating spaces, mapping dreams.
+        </p>
+      </div>
+      
+      <div>
+        <span class="footer-title">Navigation</span>
+        <div class="footer-links">
+          <a href="#portfolio" class="footer-link">Selected Work</a>
+          <a href="#services" class="footer-link">Studio Services</a>
+          <a href="#about" class="footer-link">Our Philosophy</a>
+          <a href="#contact" class="footer-link">Request Invitation</a>
+        </div>
+      </div>
+      
+      <div>
+        <span class="footer-title">Journal</span>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Estate Design Patterns</a>
+          <a href="#" class="footer-link">Horticulture Curation</a>
+          <a href="#" class="footer-link">Stone & Water Details</a>
+          <a href="#" class="footer-link">Spring Curation '26</a>
+        </div>
+      </div>
+      
+      <div>
+        <span class="footer-title">Socialize</span>
+        <div class="footer-socials">
+          <a href="#" class="social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24">
+              <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4A3.6,3.6 0 0,0 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6A3.6,3.6 0 0,0 16.4,4H7.6M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5Z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="Pinterest">
+            <svg viewBox="0 0 24 24">
+              <path d="M12.2,2C6.7,2 2.2,6.5 2.2,12C2.2,16.2 4.8,19.8 8.5,21.2C8.4,20.4 8.4,19.2 8.6,18.2C8.8,17.3 9.8,13.1 9.8,13.1C9.8,13.1 9.5,12.5 9.5,11.6C9.5,10.2 10.3,9.2 11.3,9.2C12.2,9.2 12.6,9.9 12.6,10.7C12.6,11.6 12,12.9 11.7,14.1C11.5,15.1 12.2,15.9 13.2,15.9C15,15.9 16.4,14 16.4,11.3C16.4,8.9 14.7,7.2 12.2,7.2C9.3,7.2 7.6,9.4 7.6,11.8C7.6,12.7 7.9,13.6 8.4,14.2C8.5,14.3 8.5,14.4 8.5,14.5C8.4,14.9 8.3,15.4 8.2,15.6C8.2,15.8 8.1,15.8 7.9,15.7C6.7,15.2 6,13.5 6,11.7C6,8.5 8.3,5.6 12.5,5.6C15.9,5.6 18.5,8 18.5,11.3C18.5,14.7 16.4,17.4 13.4,17.4C12.4,17.4 11.4,16.9 11.1,16.3C11.1,16.3 10.6,18.3 10.5,18.7C10.1,20.2 9.1,22.1 8.5,23C9.7,23.4 10.9,23.6 12.2,23.6C17.7,23.6 22.2,19.1 22.2,13.6C22.2,6.5 17.7,2 12.2,2Z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <span>&copy; 2026 TERRA & CO. ALL RIGHTS RESERVED.</span>
+      
+      <div class="back-to-top" id="back-to-top">
+        <span>Back to Top</span>
+        <div class="back-to-top-arrow">↑</div>
       </div>
     </div>
   </footer>
 
-  <!-- Sticky desktop action dock / mobile bottom action bar -->
-  <div class="action-dock" id="action-dock">
-    <a href="tel:+12125550190" class="dock-btn" title="Call Us">
-      <span class="dock-icon">📞</span>
-      <span class="dock-text">Call Us</span>
-    </a>
-    <a href="#reserve" class="dock-btn btn-gold" title="Reserve Table">
-      <span class="dock-icon">📅</span>
-      <span class="dock-text">Book Table</span>
-    </a>
-  </div>
-
+  <!-- JS Logic -->
   <script>
-    // Constants for features detection
-    const isMobile = window.matchMedia("(max-width: 768px)").matches || 'ontouchstart' in window;
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    // --- INTERSECTION OBSERVER (SCROLL REVEALS) ---
-    const revealCallback = (entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    };
-
-    const revealObserver = new IntersectionObserver(revealCallback, {
-      threshold: 0.08,
-      rootMargin: '0px 0px -40px 0px'
-    });
-
-    document.querySelectorAll('.reveal').forEach(element => {
-      revealObserver.observe(element);
-    });
-
-    // --- SPLIT TEXT FOR HERO ANIMATIONS ---
-    const splitText = (selector) => {
-      const el = document.querySelector(selector);
-      if (!el) return;
-      const words = el.innerText.split(' ');
-      el.innerHTML = words.map(word => {
-        return `<span class="word-mask"><span class="word-reveal">${word}</span></span>`;
-      }).join(' ');
-    };
-
-    splitText('#hero-headline');
-
-    // --- SCROLL PROGRESS BAR ---
-    window.addEventListener('scroll', () => {
-      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolledPct = (winScroll / height) * 100;
-      document.getElementById('scroll-progress').style.width = scrolledPct + '%';
-    });
-
-    // --- PAGE INITIALIZATION (TRANSITIONS ON LOAD) ---
-    window.addEventListener('load', () => {
-      const hero = document.getElementById('home');
-      if (hero) {
-        hero.classList.add('loaded');
-      }
-      
-      // Setup word reveals staggered animation delay
-      document.querySelectorAll('#hero-headline .word-reveal').forEach((word, idx) => {
-        word.style.transitionDelay = `${idx * 0.12}s`;
-      });
-    });
-
-    // --- NAVBAR SCROLL BEHAVIOR & GLASSMORPHISM ---
+    // 1. Scroll Progress & Sticky Navbar & Scroll variables
+    const scrollProgress = document.getElementById('scroll-progress');
     const navbar = document.getElementById('navbar');
+    
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 80) {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      
+      // Update variables
+      document.documentElement.style.setProperty('--scroll-percent', `${scrollPercent}%`);
+      document.documentElement.style.setProperty('--scroll-y', `${scrollTop}px`);
+      
+      // Navbar scroll effect
+      if (scrollTop > 50) {
         navbar.classList.add('scrolled');
       } else {
         navbar.classList.remove('scrolled');
       }
     });
 
-    // Active Navigation link highlighter by scroll position
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section, footer');
-
-    const highlightActiveNav = () => {
-      let scrollPos = window.scrollY + 200;
-      sections.forEach(sec => {
-        if (sec.id && scrollPos >= sec.offsetTop && scrollPos < sec.offsetTop + sec.offsetHeight) {
-          navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${sec.id}`) {
-              link.classList.add('active');
-            }
-          });
-        }
-      });
-    };
-    window.addEventListener('scroll', highlightActiveNav);
-
-    // --- MOBILE HAMBURGER & SIDEBAR NAVIGATION ---
-    const hamburger = document.getElementById('hamburger');
-    const navLinksMenu = document.getElementById('nav-links');
-    const navOverlay = document.getElementById('nav-overlay');
-
-    const toggleMobileMenu = () => {
-      hamburger.classList.toggle('active');
-      navLinksMenu.classList.toggle('open');
-      navOverlay.classList.toggle('active');
-      
-      if (navLinksMenu.classList.contains('open')) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = '';
-      }
-    };
-
-    const closeMobileMenu = () => {
-      hamburger.classList.remove('active');
-      navLinksMenu.classList.remove('open');
-      navOverlay.classList.remove('active');
-      document.body.style.overflow = '';
-    };
-
-    hamburger.addEventListener('click', toggleMobileMenu);
-    navOverlay.addEventListener('click', closeMobileMenu);
+    // 2. Mobile Menu Toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const mobileOverlay = document.getElementById('mobile-overlay');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
     
-    // Close mobile menu on links click
-    navLinks.forEach(link => {
-      link.addEventListener('click', closeMobileMenu);
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      mobileOverlay.classList.toggle('open');
+      document.body.style.overflow = mobileOverlay.classList.contains('open') ? 'hidden' : '';
+    });
+    
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('open');
+        mobileOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+      });
     });
 
-    // --- PARALLAX SCROLL ON HERO & GENERAL PARALLAX IMAGES ---
-    if (!isMobile && !prefersReducedMotion) {
-      let ticking = false;
-      window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            // Hero text parallax (subtler now to prevent layout shifts)
-            const heroContent = document.querySelector('.hero-content');
-            const heroBg = document.getElementById('hero-bg-parallax');
-            const heroAurora = document.querySelector('.hero-aurora-bg');
-            
-            if (heroContent && scrolled < 800) {
-              heroContent.style.transform = `translate3d(0, ${scrolled * 0.2}px, 0)`;
-              heroContent.style.opacity = 1 - (scrolled / 650);
-            }
-            if (heroBg && scrolled < 1000) {
-              heroBg.style.transform = `translate3d(0, ${scrolled * 0.12}px, 0)`;
-            }
-            if (heroAurora && scrolled < 800) {
-              heroAurora.style.transform = `translate3d(0, ${scrolled * 0.1}px, 0)`;
-            }
-
-            // General Image Parallax
-            document.querySelectorAll('.parallax-image').forEach(img => {
-              const parentRect = img.parentElement.getBoundingClientRect();
-              const parentTop = parentRect.top + scrolled;
-              const viewHeight = window.innerHeight;
-              const relativeScroll = (scrolled + viewHeight / 2) - (parentTop + parentRect.height / 2);
-              
-              // Scale translation factor
-              const translation = relativeScroll * 0.12;
-              img.style.transform = `translate3d(0, ${translation}px, 0)`;
-            });
-
-            ticking = false;
-          });
-          ticking = true;
+    // 3. Scroll Reveal Animations (Intersection Observer)
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .scale-up');
+    
+    const observerOptions = {
+      root: null,
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target); // Reveal once
         }
       });
-    }
+    }, observerOptions);
+    
+    revealElements.forEach(element => {
+      observer.observe(element);
+    });
 
-    // --- MENU CATEGORY TABS HUB FILTER ---
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const menuCards = document.querySelectorAll('.menu-card');
-
-    tabBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // Toggle active category button
-        tabBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const targetCategory = btn.getAttribute('data-category');
-
-        menuCards.forEach(card => {
-          card.style.opacity = '0';
-          card.style.transform = 'translate3d(0, 20px, 0) scale(0.95)';
+    // 4. Portfolio Filtering Logic
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Toggle active button
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        const filterValue = button.getAttribute('data-filter');
+        
+        portfolioItems.forEach(item => {
+          // Add opacity transitions
+          item.style.opacity = '0';
+          item.style.transform = 'scale(0.95) translateY(10px)';
           
           setTimeout(() => {
-            if (card.getAttribute('data-category') === targetCategory) {
-              card.style.display = 'block';
-              // Force element repaint/reflow to register transform
-              void card.offsetWidth;
-              card.style.opacity = '1';
-              card.style.transform = 'translate3d(0, 0, 0) scale(1)';
+            const category = item.getAttribute('data-category');
+            if (filterValue === 'all' || category === filterValue) {
+              item.classList.remove('hidden');
+              // Trigger reflow
+              void item.offsetWidth;
+              item.style.opacity = '1';
+              item.style.transform = 'scale(1) translateY(0)';
             } else {
-              card.style.display = 'none';
+              item.classList.add('hidden');
             }
-          }, 300);
+          }, 400);
         });
       });
     });
 
-    // --- MENU CARD 3D TILT EFFECT & SELECTION ACTION ---
-    const menuData = {
-      // Signature Brews
-      "Velvet Espresso": { image: "./espresso_pour.png", price: "$6.50", desc: "A concentrated kiss of dark chocolate and stone fruit, crowned with a dense, tiger-striped crema." },
-      "Rose Cold Brew": { image: "./cold_brew.png", price: "$8.00", desc: "Our slow-drip single origin infused with organic rosewater, served over a hand-carved ice sphere." },
-      "Golden Turmeric Latte": { image: "./golden_latte.png", price: "$7.50", desc: "Raw honey and sun-kissed turmeric root, steamed with organic oat milk and cardamom dust." },
-      "Midnight Mocha": { image: "./mocha_coffee.png", price: "$8.50", desc: "Artisanal Ecuadorian dark chocolate blended with espresso and a touch of black sea salt." },
-      "Fig & Honey Cortado": { image: "./cortado_coffee.png", price: "$7.00", desc: "Equal parts espresso and warm milk, sweetened with double-filtered wildflower honey and fig extract." },
-      "Smoked Vanilla Flat": { image: "./flat_white.png", price: "$8.00", desc: "Espresso sweetened with house-smoked Madagascar vanilla bean syrup, with velvet microfoam." },
-      
-      // Slow Bar
-      "Panama Geisha": { image: "./brew_ritual.png", price: "$12.00", desc: "Exclusive Panama Geisha lot with tasting notes of jasmine, white peach, and orange blossom." },
-      "Yemen Haraz": { image: "./syphon_coffee.png", price: "$10.50", desc: "Rare volcanic soil micro-lot with complex dark cherry, cardamom, and clove undertones." },
-      "Bourbon Sidra": { image: "./chemex_coffee.png", price: "$11.00", desc: "Double anaerobic fermentation yielding a wild bouquet of mango, grape, and floral honey." },
-      
-      // Dolci
-      "Velvet Croissant": { image: "./pastry_craft.png", price: "$7.50", desc: "Sourdough croissant laminated with Normandy butter, baked to crisp shell, dusted with gold flake." },
-      "Rosewater Macarons": { image: "./macarons.png", price: "$8.50", desc: "Delicate almond flour sandwiches filled with fresh raspberry jam and organic rose absolute." },
-      "Espresso Dark Tart": { image: "./espresso_tart.png", price: "$9.00", desc: "A velvet custard of Ecuadorian cacao infused with our house espresso, nestled in cocoa crust." }
-    };
-
-    const customizerPanel = document.getElementById('customizer-panel');
-    const panelImage = document.getElementById('panel-image');
-    const panelName = document.getElementById('panel-name');
-    const panelDesc = document.getElementById('panel-desc');
-
-    const ticketItem = document.getElementById('ticket-item');
-    const ticketMilk = document.getElementById('ticket-milk');
-    const ticketSweetness = document.getElementById('ticket-sweetness');
-    const ticketShots = document.getElementById('ticket-shots');
-    const ticketPrice = document.getElementById('ticket-price');
-    const ticketNum = document.getElementById('ticket-number');
-
-    let currentItemName = "";
-
-    // Reset customization selectors
-    const resetOptionSelections = () => {
-      document.querySelectorAll('.option-group').forEach(group => {
-        const btns = group.querySelectorAll('.option-btn');
-        btns.forEach((btn, idx) => {
-          if (idx === 0) {
-            btn.classList.add('active');
-            updateTicketOption(group.querySelector('.option-title').innerText, btn.getAttribute('data-value'));
-          } else {
-            btn.classList.remove('active');
-          }
-        });
-      });
-    };
-
-    const updateTicketOption = (category, val) => {
-      if (category.includes('MILK')) ticketMilk.innerText = val;
-      else if (category.includes('SWEETNESS')) ticketSweetness.innerText = val;
-      else if (category.includes('SHOTS')) ticketShots.innerText = val;
-    };
-
-    // Open detail customization panel
-    const openCustomizer = (itemName) => {
-      const details = menuData[itemName];
-      if (!details) return;
-
-      currentItemName = itemName;
-      panelImage.src = details.image;
-      panelImage.alt = itemName;
-      panelName.innerText = itemName;
-      panelDesc.innerText = details.desc;
-
-      ticketItem.innerText = itemName;
-      ticketPrice.innerText = details.price;
-      ticketNum.innerText = '#' + Math.floor(1000 + Math.random() * 9000);
-
-      resetOptionSelections();
-      customizerPanel.classList.add('open');
-      navOverlay.classList.add('active'); // Activate background overlay
-    };
-
-    // Event listener for closing customization panel
-    document.getElementById('sidebar-close').addEventListener('click', () => {
-      customizerPanel.classList.remove('open');
-      navOverlay.classList.remove('active');
-    });
-
-    // Close panel clicking outside it
-    navOverlay.addEventListener('click', () => {
-      customizerPanel.classList.remove('open');
-      navOverlay.classList.remove('active');
-    });
-
-    // Attach customization button toggle clicks
-    document.querySelectorAll('.option-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const selectorGroup = btn.parentElement;
-        selectorGroup.querySelectorAll('.option-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+    // 5. Interactive Process Timeline
+    const processTabs = document.querySelectorAll('.process-step-tab');
+    const processDetails = document.querySelectorAll('.process-detail-item');
+    
+    processTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Deactivate current tabs
+        processTabs.forEach(t => t.classList.remove('active'));
+        // Activate current tab
+        tab.classList.add('active');
         
-        const categoryName = selectorGroup.previousElementSibling.innerText;
-        updateTicketOption(categoryName, btn.getAttribute('data-value'));
-      });
-    });
-
-    // Setup card interactions (3D tilt & clicks)
-    menuCards.forEach(card => {
-      // 3D Tilt on Hover
-      if (!isMobile && !prefersReducedMotion) {
-        card.addEventListener('mouseenter', () => {
-          card.classList.add('tilting');
+        const stepNum = tab.getAttribute('data-step');
+        
+        // Hide all descriptions
+        processDetails.forEach(detail => {
+          detail.classList.remove('active');
         });
         
-        card.addEventListener('mousemove', (e) => {
-          const cardRect = card.getBoundingClientRect();
-          const cardWidth = cardRect.width;
-          const cardHeight = cardRect.height;
-          
-          const mouseX = (e.clientX - cardRect.left) / cardWidth - 0.5;
-          const mouseY = (e.clientY - cardRect.top) / cardHeight - 0.5;
-          
-          const rotateX = -mouseY * 12; 
-          const rotateY = mouseX * 12;
-          
-          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
-        });
-        
-        card.addEventListener('mouseleave', () => {
-          card.classList.remove('tilting');
-          card.style.transform = '';
-        });
-      }
-
-      // Open Customizer on Click
-      card.addEventListener('click', () => {
-        const itemName = card.querySelector('.menu-card-title').innerText;
-        openCustomizer(itemName);
-      });
-    });
-
-
-
-    // --- INTERACTIVE RESERVATION BOOKING PLANNER WIDGET ---
-    let bookingData = {
-      date: "Today",
-      time: "9:00 AM",
-      party: "2 Guests"
-    };
-
-    // Date Select
-    document.querySelectorAll('.date-selector .booking-select-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.date-selector .booking-select-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        bookingData.date = btn.getAttribute('data-date');
-      });
-    });
-
-    // Time Select
-    document.querySelectorAll('.time-selector .booking-select-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.time-selector .booking-select-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        bookingData.time = btn.getAttribute('data-time');
-      });
-    });
-
-    // Party Select
-    document.querySelectorAll('.party-selector .booking-select-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.party-selector .booking-select-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        bookingData.party = btn.getAttribute('data-party');
-      });
-    });
-
-    // Step confirm action
-    document.getElementById('btn-next-step').addEventListener('click', () => {
-      document.getElementById('res-date').innerText = bookingData.date;
-      document.getElementById('res-time').innerText = bookingData.time;
-      document.getElementById('res-party').innerText = bookingData.party;
-      document.getElementById('res-id').innerText = '#VB-' + Math.floor(1000 + Math.random() * 9000);
-      
-      document.getElementById('step-1').style.display = 'none';
-      document.getElementById('step-2').classList.add('active');
-    });
-
-    // Reset planner booking
-    document.getElementById('btn-reset-booking').addEventListener('click', () => {
-      document.getElementById('step-2').classList.remove('active');
-      document.getElementById('step-1').style.display = 'block';
-    });
-
-
-    // --- TESTIMONIALS CAROUSEL DRAG & SWIPE ---
-    const track = document.getElementById('carousel-track');
-    const indicators = document.querySelectorAll('.indicator');
-    let isDragging = false;
-    let startX;
-    let scrollLeft;
-
-    // Direct click indicators to scroll
-    indicators.forEach((indicator, index) => {
-      indicator.addEventListener('click', () => {
-        const cardWidth = track.clientWidth;
-        track.scrollTo({
-          left: cardWidth * index,
-          behavior: 'smooth'
-        });
-        updateIndicators(index);
-      });
-    });
-
-    // Update active indicators based on scroll position
-    track.addEventListener('scroll', () => {
-      const cardWidth = track.clientWidth;
-      const index = Math.round(track.scrollLeft / cardWidth);
-      updateIndicators(index);
-    });
-
-    const updateIndicators = (index) => {
-      indicators.forEach((ind, i) => {
-        if (i === index) {
-          ind.classList.add('active');
-        } else {
-          ind.classList.remove('active');
+        // Show corresponding description
+        const targetDetail = document.getElementById(`step-desc-${stepNum}`);
+        if (targetDetail) {
+          targetDetail.classList.add('active');
         }
       });
-    };
-
-    // Drag-to-scroll implementation (Desktop)
-    track.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      startX = e.pageX - track.offsetLeft;
-      scrollLeft = track.scrollLeft;
-      track.style.scrollBehavior = 'auto'; // Instant responsiveness
     });
 
-    track.addEventListener('mouseleave', () => {
-      if (isDragging) {
-        isDragging = false;
-        snapToCard();
-      }
-    });
-
-    track.addEventListener('mouseup', () => {
-      if (isDragging) {
-        isDragging = false;
-        snapToCard();
-      }
-    });
-
-    track.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
+    // 6. Inquiry Form Submission Success Effect
+    const inquiryForm = document.getElementById('inquiry-form');
+    const formSuccess = document.getElementById('form-success');
+    
+    inquiryForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const x = e.pageX - track.offsetLeft;
-      const walk = (x - startX) * 1.5; // multiplier for drag speed
-      track.scrollLeft = scrollLeft - walk;
+      
+      // Perform minor input validation verification before visual success animation
+      const nameVal = document.getElementById('form-name').value.trim();
+      const emailVal = document.getElementById('form-email').value.trim();
+      
+      if (nameVal && emailVal) {
+        // Transition form into success card
+        formSuccess.classList.add('active');
+        inquiryForm.reset();
+      }
     });
 
-    const snapToCard = () => {
-      track.style.scrollBehavior = 'smooth';
-      const cardWidth = track.clientWidth;
-      const index = Math.round(track.scrollLeft / cardWidth);
-      track.scrollTo({
-        left: cardWidth * index,
+    // 7. Back To Top
+    const backToTopBtn = document.getElementById('back-to-top');
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
         behavior: 'smooth'
       });
-    };
+    });
   </script>
 </body>
 </html>
