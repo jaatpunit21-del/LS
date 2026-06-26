@@ -15,15 +15,15 @@ if not os.path.exists(output_dir):
 image_map = {
     "hero_bg.jpg": "1588608368947-c243aea32bff",         # Garden lawn path (Hero)
     "about_main.jpg": "1527359443443-84a48aec73d2",      # Manicured garden lawn
-    "about_accent.jpg": "1595502124338-950db27ea1c7",    # Gardener planting seedlings
+    "about_accent.jpg": "1507591064344-4c6ce005b128",    # Beautiful lawn & path (instead of gardener hands)
     "before.jpg": "1595855759920-86582396756a",          # Soil texture (Before)
     "after.jpg": "1560749003-f4b1e17e2dff",           # Lush backyard green lawn (After)
     "portfolio_1.jpg": "1507591064344-4c6ce005b128",     # Beautiful garden path & lawn
     "portfolio_2.jpg": "1588608368947-c243aea32bff",     # Lush garden path
     "portfolio_3.jpg": "1560749003-f4b1e17e2dff",     # Cozy backyard lawn
-    "portfolio_4.jpg": "1591383496652-db773e57b1d0",     # Curation flora details
+    "portfolio_4.jpg": "1582268611958-ebfd161ef9cf",     # Miami luxury turf/lawn (instead of plant details)
     "portfolio_5.jpg": "1527359443443-84a48aec73d2",     # Pristine green lawn
-    "portfolio_6.jpg": "1601654253194-260e0b6984f9"      # Lush landscaping backyard
+    "portfolio_6.jpg": "1560749003-f4b1e17e2dff"      # Lush green lawn (working ID)
 }
 
 headers = {
