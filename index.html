@@ -1722,6 +1722,218 @@
         text-align: center;
       }
     }
+
+    /* ----------------------------------------------------
+       STICKY FLOATING ACTION BAR
+       ---------------------------------------------------- */
+    .sticky-actions-bar {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      gap: 1rem;
+      z-index: 850;
+      transition: var(--transition-smooth);
+    }
+    .sticky-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.8rem 1.6rem;
+      border-radius: 50px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    }
+    .sticky-btn-call {
+      background-color: var(--accent-moss);
+      border: 1px solid transparent;
+      color: var(--text-stone);
+    }
+    .sticky-btn-call:hover {
+      background-color: var(--bg-deep-forest);
+      border-color: var(--accent-moss);
+      color: var(--accent-moss);
+      transform: translateY(-2px);
+    }
+    .sticky-btn-appt {
+      background-color: var(--gold-detail);
+      border: 1px solid transparent;
+      color: var(--bg-deep-forest);
+    }
+    .sticky-btn-appt:hover {
+      background-color: var(--bg-deep-forest);
+      border-color: var(--gold-detail);
+      color: var(--gold-detail);
+      transform: translateY(-2px);
+    }
+    .sticky-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    /* ----------------------------------------------------
+       BEFORE/AFTER IMAGE SLIDER
+       ---------------------------------------------------- */
+    .transformation-section {
+      padding: 10rem 6rem;
+      background-color: var(--bg-deep-forest);
+      border-bottom: 1px solid var(--divider-color);
+    }
+    .transformation-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+    .slider-container {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      height: 600px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 4px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+      user-select: none;
+    }
+    .slider-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      pointer-events: none;
+    }
+    .slider-img-after {
+      z-index: 10;
+    }
+    .slider-img-before {
+      z-index: 20;
+      width: 50%;
+    }
+    .slider-handle {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 4px;
+      height: 100%;
+      background-color: var(--gold-detail);
+      z-index: 30;
+      cursor: ew-resize;
+      transform: translateX(-50%);
+    }
+    .slider-handle::after {
+      content: '↔';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 48px;
+      height: 48px;
+      background-color: var(--bg-deep-forest);
+      border: 2px solid var(--gold-detail);
+      border-radius: 50%;
+      color: var(--gold-detail);
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      transition: var(--transition-fast);
+    }
+    .slider-handle:hover::after {
+      background-color: var(--gold-detail);
+      color: var(--bg-deep-forest);
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+    .slider-label {
+      position: absolute;
+      bottom: 20px;
+      padding: 0.5rem 1rem;
+      background-color: rgba(11, 20, 9, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(143, 175, 130, 0.2);
+      color: var(--text-stone);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      z-index: 25;
+      pointer-events: none;
+    }
+    .slider-label-before {
+      left: 20px;
+    }
+    .slider-label-after {
+      right: 20px;
+      z-index: 15;
+    }
+
+    /* ----------------------------------------------------
+       MAP EMBED STYLE
+       ---------------------------------------------------- */
+    .map-embed-wrapper {
+      margin-top: 3.5rem;
+      width: 100%;
+      border: 1px solid rgba(143, 175, 130, 0.15);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    .map-embed-wrapper iframe {
+      display: block;
+      filter: grayscale(1) invert(0.9) contrast(1.2) brightness(0.95);
+      transition: var(--transition-smooth);
+    }
+    .map-embed-wrapper:hover iframe {
+      filter: grayscale(0.5) invert(0.1) contrast(1.0) brightness(1.0);
+    }
+
+    @media (max-width: 768px) {
+      .sticky-actions-bar {
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        gap: 0;
+        border-top: 1px solid rgba(143, 175, 130, 0.2);
+        background-color: rgba(11, 20, 9, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 0.8rem 1rem;
+        box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.5);
+      }
+      .sticky-btn {
+        flex: 1;
+        justify-content: center;
+        border-radius: 4px;
+        padding: 0.9rem;
+        font-size: 0.75rem;
+        box-shadow: none;
+      }
+      .sticky-btn-call {
+        border-radius: 30px 0 0 30px;
+      }
+      .sticky-btn-appt {
+        border-radius: 0 30px 30px 0;
+      }
+      .footer {
+        padding-bottom: 7rem;
+      }
+      .transformation-section {
+        padding: 6rem 2rem;
+      }
+      .slider-container {
+        height: 400px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1974,66 +2186,94 @@
       
       <div class="portfolio-filters">
         <button class="filter-btn active" data-filter="all">All Projects</button>
-        <button class="filter-btn" data-filter="estates">Estates</button>
+        <button class="filter-btn" data-filter="lawns">Lawns</button>
         <button class="filter-btn" data-filter="gardens">Gardens</button>
-        <button class="filter-btn" data-filter="oasis">Oases</button>
+        <button class="filter-btn" data-filter="backyards">Backyards</button>
       </div>
     </div>
     
     <div class="portfolio-grid">
-      <!-- Item 1 -->
-      <div class="portfolio-item reveal" data-category="estates">
-        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80" alt="The Aspen Ridge Estate Landscape" class="portfolio-item-img">
+      <!-- Item 1: Lawns -->
+      <div class="portfolio-item reveal" data-category="lawns">
+        <img src="https://images.unsplash.com/photo-1534710961216-75c941430f31?w=800&q=80" alt="The Aspen Ridge Estate Lawn" class="portfolio-item-img">
         <div class="portfolio-item-overlay">
           <div class="portfolio-meta">
             <span class="label-mono" style="color: var(--gold-detail);">Aspen, CO</span>
             <span class="label-mono" style="opacity: 0.5;">•</span>
-            <span class="label-mono">Estate</span>
+            <span class="label-mono">Lawn</span>
           </div>
           <h3 class="portfolio-item-title">The Aspen Ridge Estate</h3>
-          <p class="portfolio-item-subtitle">A multi-layered Alpine meadow featuring natural flagstone paths and native mountain spruce.</p>
+          <p class="portfolio-item-subtitle">Endless organic rye-grass lawn surrounded by native spruce and custom masonry beds.</p>
         </div>
       </div>
       
-      <!-- Item 2 -->
+      <!-- Item 2: Gardens -->
       <div class="portfolio-item reveal" data-category="gardens">
-        <img src="https://images.unsplash.com/photo-1508873696983-2df519f0397e?w=800&q=80" alt="Kyoto Minimalist Garden Path" class="portfolio-item-img">
+        <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800&q=80" alt="Kyoto Minimalist Garden Path" class="portfolio-item-img">
         <div class="portfolio-item-overlay">
           <div class="portfolio-meta">
             <span class="label-mono" style="color: var(--gold-detail);">Portland, OR</span>
             <span class="label-mono" style="opacity: 0.5;">•</span>
             <span class="label-mono">Garden</span>
           </div>
-          <h3 class="portfolio-item-title">Kyoto Minimalist Path</h3>
-          <p class="portfolio-item-subtitle">Tranquil walking path utilizing clean moss bases, precision steps, and customized water basins.</p>
+          <h3 class="portfolio-item-title">Kyoto Minimalist Garden</h3>
+          <p class="portfolio-item-subtitle">Quiet walking garden displaying stone steps, native moss layouts, and maple frames.</p>
         </div>
       </div>
       
-      <!-- Item 3 -->
-      <div class="portfolio-item reveal" data-category="oasis">
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Malibu Coastal Patio and Pool" class="portfolio-item-img">
+      <!-- Item 3: Backyards -->
+      <div class="portfolio-item reveal" data-category="backyards">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Malibu Coastal Backyard" class="portfolio-item-img">
         <div class="portfolio-item-overlay">
           <div class="portfolio-meta">
             <span class="label-mono" style="color: var(--gold-detail);">Malibu, CA</span>
             <span class="label-mono" style="opacity: 0.5;">•</span>
-            <span class="label-mono">Oasis</span>
+            <span class="label-mono">Backyard</span>
           </div>
-          <h3 class="portfolio-item-title">Malibu Coastal Terrace</h3>
-          <p class="portfolio-item-subtitle">Infinity terrace design featuring geometric limestone framing, native grasses, and a warm fire lounge.</p>
+          <h3 class="portfolio-item-title">Malibu Coastal Backyard</h3>
+          <p class="portfolio-item-subtitle">Infinity backyard terrace incorporating geometric limestone pathways, a linear fire feature, and pool borders.</p>
         </div>
       </div>
       
-      <!-- Item 4 -->
-      <div class="portfolio-item reveal" data-category="estates">
-        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80" alt="The Berkshire Countryside Retreat Garden" class="portfolio-item-img">
+      <!-- Item 4: Gardens -->
+      <div class="portfolio-item reveal" data-category="gardens">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80" alt="The Berkshire Retreat Garden" class="portfolio-item-img">
         <div class="portfolio-item-overlay">
           <div class="portfolio-meta">
             <span class="label-mono" style="color: var(--gold-detail);">Lennox, MA</span>
             <span class="label-mono" style="opacity: 0.5;">•</span>
-            <span class="label-mono">Estate</span>
+            <span class="label-mono">Garden</span>
           </div>
           <h3 class="portfolio-item-title">The Berkshire Retreat</h3>
-          <p class="portfolio-item-subtitle">Classic English-inspired estate gardens lined with lavender hedges, boxwood frames, and cobblestones.</p>
+          <p class="portfolio-item-subtitle">Classic English-inspired estate garden featuring curated boxwoods, gravel avenues, and lavender lining.</p>
+        </div>
+      </div>
+
+      <!-- Item 5: Lawns -->
+      <div class="portfolio-item reveal" data-category="lawns">
+        <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80" alt="Miami Luxury Turf Estate" class="portfolio-item-img">
+        <div class="portfolio-item-overlay">
+          <div class="portfolio-meta">
+            <span class="label-mono" style="color: var(--gold-detail);">Miami, FL</span>
+            <span class="label-mono" style="opacity: 0.5;">•</span>
+            <span class="label-mono">Lawn</span>
+          </div>
+          <h3 class="portfolio-item-title">The Miami Turf Estate</h3>
+          <p class="portfolio-item-subtitle">Seamless luxury turf segments framing a contemporary pool deck and outdoor architecture.</p>
+        </div>
+      </div>
+
+      <!-- Item 6: Backyards -->
+      <div class="portfolio-item reveal" data-category="backyards">
+        <img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=800&q=80" alt="The Austin Oasis Backyard" class="portfolio-item-img">
+        <div class="portfolio-item-overlay">
+          <div class="portfolio-meta">
+            <span class="label-mono" style="color: var(--gold-detail);">Austin, TX</span>
+            <span class="label-mono" style="opacity: 0.5;">•</span>
+            <span class="label-mono">Backyard</span>
+          </div>
+          <h3 class="portfolio-item-title">The Austin Oasis</h3>
+          <p class="portfolio-item-subtitle">Cozy backyard living space featuring a cedar pergola, limestone paving, and layered landscape borders.</p>
         </div>
       </div>
     </div>
@@ -2169,11 +2409,34 @@
     </div>
   </section>
 
+  <!-- Before/After Section -->
+  <section class="transformation-section" id="transformation">
+    <div class="transformation-header reveal">
+      <span class="label-mono">05 / Transformations</span>
+      <h2 class="section-title" style="margin-top: 1rem;">Vision Realized</h2>
+      <p class="section-desc" style="margin: 1.5rem auto 0 auto;">Drag the slider to see the transition from raw site grading to our final, curated estate design.</p>
+    </div>
+    
+    <div class="slider-container reveal">
+      <!-- After Image -->
+      <div class="slider-img slider-img-after" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80');"></div>
+      <!-- Before Image (clipped) -->
+      <div class="slider-img slider-img-before" id="before-img" style="background-image: url('https://images.unsplash.com/photo-1598902108854-10e335adac99?w=1200&q=80');"></div>
+      
+      <!-- Slider Handle -->
+      <div class="slider-handle" id="slider-handle"></div>
+      
+      <!-- Labels -->
+      <span class="slider-label slider-label-before">Before (Site Prep)</span>
+      <span class="slider-label slider-label-after">After (TERRA & CO.)</span>
+    </div>
+  </section>
+
   <!-- Inquiry Section -->
   <section class="contact-section" id="contact">
     <div class="contact-info">
       <div class="contact-heading-wrap">
-        <span class="label-mono">05 / Start Your Journey</span>
+        <span class="label-mono">06 / Start Your Journey</span>
         <h2 class="contact-title">Begin Your Estate Transformation</h2>
       </div>
       
@@ -2195,6 +2458,19 @@
             INSTAGRAM // PINTEREST // JOURNAL
           </span>
         </div>
+      </div>
+
+      <!-- Google Map Block -->
+      <div class="map-embed-wrapper reveal">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3304.7578278278783!2d-118.3773121!3d34.0834371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2beb448ef4187%3A0xe5a363720760bca4!2s8480%20Melrose%20Ave%2C%20West%20Hollywood%2C%20CA%2090069!5e0!3m2!1sen!2sus!4v1719420000000!5m2!1sen!2sus" 
+          width="100%" 
+          height="250" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
       </div>
     </div>
     
@@ -2460,12 +2736,65 @@
 
     // 7. Back To Top
     const backToTopBtn = document.getElementById('back-to-top');
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+    if (backToTopBtn) {
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
       });
-    });
+    }
+
+    // 8. Before/After Image Slider Dragging Logic
+    const sliderContainer = document.querySelector('.slider-container');
+    const beforeImg = document.getElementById('before-img');
+    const sliderHandle = document.getElementById('slider-handle');
+
+    if (sliderContainer && beforeImg && sliderHandle) {
+      let isDragging = false;
+
+      const setSliderPos = (xPos) => {
+        const rect = sliderContainer.getBoundingClientRect();
+        let percentage = ((xPos - rect.left) / rect.width) * 100;
+        
+        // Constrain bounds
+        if (percentage < 0) percentage = 0;
+        if (percentage > 100) percentage = 100;
+        
+        beforeImg.style.width = `${percentage}%`;
+        sliderHandle.style.left = `${percentage}%`;
+      };
+
+      const handleMove = (e) => {
+        if (!isDragging) return;
+        const xPos = e.touches ? e.touches[0].clientX : e.clientX;
+        setSliderPos(xPos);
+      };
+
+      sliderHandle.addEventListener('mousedown', () => isDragging = true);
+      window.addEventListener('mouseup', () => isDragging = false);
+      window.addEventListener('mousemove', handleMove);
+
+      sliderHandle.addEventListener('touchstart', () => isDragging = true);
+      window.addEventListener('touchend', () => isDragging = false);
+      window.addEventListener('touchmove', handleMove);
+    }
   </script>
+
+  <!-- Sticky Floating Action Bar -->
+  <div class="sticky-actions-bar">
+    <a href="tel:3105550190" class="sticky-btn sticky-btn-call">
+      <svg viewBox="0 0 24 24">
+        <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z" />
+      </svg>
+      Call Now
+    </a>
+    <a href="#contact" class="sticky-btn sticky-btn-appt">
+      <svg viewBox="0 0 24 24">
+        <path d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" />
+      </svg>
+      Appointment
+    </a>
+  </div>
 </body>
 </html>
